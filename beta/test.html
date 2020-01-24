@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <script>
+      function ask_for_permission()
+      {
+        Notification.requestPermission(function(){});
+      }
+      
+      function send()
+      {
+        new Notification(document.getElementById('title').value, {
+          body: document.getElementById('body').value,
+          icon: document.getElementById('icon').value
+        });
+      }
+    </script>
+  </head>
+  <body onload="init()">
+    <button id="ask_permission" onclick="ask_for_permission()">Aktivieren</button>
+      <div>
+        Titel:
+        <input id="title" value="Neue Benachrichtigung" /><br />
+        Inhalt:
+        <input id="body" value="Ich bin eine Webnotification!" /><br />
+        Icon:
+        <input id="icon" value="https://www.a-coding-project.de/demo/notification/logo.png" /><br />
+        <button onclick="send()">Senden</button>
+    </div>
+  </body>
+</html>
