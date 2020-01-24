@@ -1,126 +1,137 @@
 <?php  
+//GET parameters
 $requested_user_name= $_GET['username'];
 $requested_job_id= $_GET['jobid'];
 $requested_accept = $_GET['accpt'];
+
+//get tasty cookies
+$username_cookie = $_COOKIE["username"]; 
+$authCode_cookie = $_COOKIE["authWebToken"]; 
+
+//connect to DB
 $host = 'localhost:3306';     
 $conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager");  
 if(! $conn )  
 {  
   die("2");  
 }  
-$username_cookie = $_COOKIE["username"]; 
-$authCode_cookie = $_COOKIE["authWebToken"]; 
-		$sql = "SELECT * FROM authCode_table WHERE Token='$authCode_cookie'";
-		$result = $conn->query($sql);
-		if ($result->num_rows > 0) {
-			// output data of each row
-			while($row = $result->fetch_assoc()) {
-				$found_token_owner = $row["User"];
-			}
-		} else {
-			setcookie("username", "", time() - 13600,'/');
-			setcookie("authWebToken", "", time() - 13600,'/');
-			header("Refresh:0; url=https://vtc.northwestvideo.de/");
-			die("wrong owner detected");
-		}
-		if ($found_token_owner != $username_cookie) {
-			setcookie("username", "", time() - 13600,'/');
-			setcookie("authWebToken", "", time() - 13600,'/');
-			header("Refresh:0; url=https://vtc.northwestvideo.de/");
-			die("wrong owner detected");
-		}
-		$sql = "SELECT * FROM user_data WHERE username='$username_cookie'";
-		$result = $conn->query($sql);
-		if ($result->num_rows > 0) {
-			// output data of each row
-			while($row = $result->fetch_assoc()) {
-				$navbar_userid = $row["userID"];
-				$rank_user = $row["rank"];
-				$profile_pic = $row["profile_pic_url"];
-				$company = $row["userCompanyID"];
-			}
-		} else {
-			setcookie("username", "", time() - 13600,'/');
-			setcookie("authWebToken", "", time() - 13600,'/');
-			header("Refresh:0; url=https://vtc.northwestvideo.de/");
-			die("profile not found");
-		}
-$sql = "SELECT * FROM rank WHERE name='$rank_user' AND forCompanyID=$company";
-		$result = $conn->query($sql);
-		if ($result->num_rows > 0) {
-			// output data of each row
+
+//authCode aus Datenbank holen
+$sql = "SELECT * FROM authCode_table WHERE Token='$authCode_cookie'";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+	while($row = $result->fetch_assoc()) {
+		$found_authCode_owner = $row["User"]; 
+	}
+} else { //authCode nicht gefunden
+	setcookie("username", "", time() - 13600,'/');
+	setcookie("authWebToken", "", time() - 13600,'/');
+	header("Refresh:0; url=https://vtc.northwestvideo.de/");
+	die("authCode not found");
+}
+if ($found_authCode_owner != $username_cookie) { //Besitzer des AuthCode stimmt nicht mit Username-Cookie überein
+	setcookie("username", "", time() - 13600,'/');
+	setcookie("authWebToken", "", time() - 13600,'/');
+	header("Refresh:0; url=https://vtc.northwestvideo.de/"); 
+	die("wrong owner detected");
+}
+
+//hole Benutzerdaten
+$sql = "SELECT * FROM user_data WHERE username='$username_cookie'";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+	while($row = $result->fetch_assoc()) {
+		$userid = $row["userID"];
+		$rank_user = $row["rank"];
+		$profile_pic = $row["profile_pic_url"];
+		$company = $row["userCompanyID"];
+		//hole Berechtigungen des Benutzers
+		$sql2 = "SELECT * FROM rank WHERE name='$rank_user' AND forCompanyID=$company";
+		$result2 = $conn->query($sql2);
+		if ($result2->num_rows > 0) {
 			while($row = $result->fetch_assoc()) {
 				$EditLogbook = $row["EditLogbook"];
 			}
-		} else {
 		}
+	}
+} else {//Nutzer nicht gefunden
+	setcookie("username", "", time() - 13600,'/');
+	setcookie("authWebToken", "", time() - 13600,'/');
+	header("Refresh:0; url=https://vtc.northwestvideo.de/");
+	die("user not found");
+}
 
+//hole Fahrtdaten
 $sql = "SELECT * FROM tour_table WHERE tour_id=$requested_job_id AND username='$requested_user_name'";
 $result2 = $conn->query($sql) or die($conn->error);
 if ($result2->num_rows > 0) {
     // output data of each row
     while($row = $result2->fetch_assoc()) {
-        $departure = $row["departure"];
-		$departure_comp = $row["depature_company"];
-		$destination = $row["destination"];
-		$destination_comp = $row["destination_company"];
-		$truck_manufacturer = $row["truck_manufacturer"];
-		$truck_model = $row["truck_model"];
-		$trailer_damage = $row["trailer_damage"];
-		$cargo_weight = $row["cargo_weight"];
-		$cargo = $row["cargo"];
-		$money_earned = $row["money_earned"];
-		$tour_date = $row["tour_date"];
-		$status = $row["status"];
-		$percentage = $row["percentage"];
-		$job_scompanyID = $row["companyID"];
-		$income = $row["money_earned"];
-		$tour_approved_int = $row["tour_approved"];
-
-		if ($status == "finished"){
-			$status = "abgeschlossen";
-		}else if ($status == "canceled"){
-			$status = "abgebrochen";
-		}else if ($status == "accepted by driver"){
-			$status = "wird gefahren";
-		}else if ($status == "accepted"){
-			$status = "von Spedition bestätigt";
-		}else if ($status == "declined"){
-			$status = "von Spedition abgelehnt";
-		}
-		$sql = "SELECT * FROM company_information_table WHERE id=$job_scompanyID";
-		$result = $conn->query($sql);
-		if ($result->num_rows > 0) {
-			// output data of each row
-			while($row = $result->fetch_assoc()) {
-				$job_s_found_comp_name = $row["name"];
-			}
-		}
-		if ($EditLogbook == "1"){
-		if($tour_approved_int == "0"){
-		if ($requested_accept == "1") {
-			$sql = "UPDATE tour_table SET tour_approved=1, status='accepted' WHERE tour_id=$requested_job_id AND username='$requested_user_name'";
-			if ($conn->query($sql) === TRUE) {
-				$status = "von Spedition angenommen";
-				$info = '<div class="alert alert-success" role="alert">
-  Auftrag erfolgreich bestätigt!
-</div>';//TRA begins
-				$sql = "SELECT * FROM company_information_table WHERE id=$job_scompanyID";
-				$result = $conn->query($sql);
-				if ($result->num_rows > 0) {
-					// output data of each row
-					while($row = $result->fetch_assoc()) {
-						$tra_comp_bank_balance = $row["bank_balance"];
-					}
-				} else {
-					die("Fehler: Absender existiert nicht"); 
-				}
-				$tra_comp_bank_balance_conv = floatval($tra_comp_bank_balance);
-				$umsatz = (int)$income - ((int)$income*0.19 )-((int)$trailer_damage*100 );
-				$tra_comp_bank_balance_new = $tra_comp_bank_balance_conv + $umsatz;
-				
-				$sql = "INSERT INTO money_transfer (sender, receiver, message, amount, status)
-VALUES ('$departure_comp', '$job_s_found_comp_name', '$message',$umsatz, 'sent')";
+	    $departure = $row["departure"];
+	    $departure_comp = $row["depature_company"];
+	    $destination = $row["destination"];
+	    $destination_comp = $row["destination_company"];
+	    $truck_manufacturer = $row["truck_manufacturer"];
+	    $truck_model = $row["truck_model"];
+	    $trailer_damage = $row["trailer_damage"];
+	    $cargo_weight = $row["cargo_weight"];
+	    $cargo = $row["cargo"];
+	    $money_earned = $row["money_earned"];
+	    $tour_date = $row["tour_date"];
+	    $status = $row["status"];
+	    $percentage = $row["percentage"];
+	    $job_scompanyID = $row["companyID"];
+	    $income = $row["money_earned"];
+	    $tour_approved_int = $row["tour_approved"];
+	    //Übersetzung des Tour-Status
+	    if ($status == "finished"){
+		    $status = "abgeschlossen";
+	    }else if ($status == "canceled"){
+		    $status = "abgebrochen";
+	    }else if ($status == "accepted by driver"){
+		    $status = "wird gefahren";
+	    }else if ($status == "accepted"){
+		    $status = "von Spedition bestätigt";
+	    }else if ($status == "declined"){
+		    $status = "von Spedition abgelehnt";
+	    }
+	    //holeden Firmennamen der Tour
+	    $sql = "SELECT * FROM company_information_table WHERE id=$job_scompanyID";
+	    $result = $conn->query($sql);
+	    if ($result->num_rows > 0) {
+		    while($row = $result->fetch_assoc()) {
+			    $job_s_found_comp_name = $row["name"];
+		    }
+	    }
+	    if ($EditLogbook == "1"){ //hat der Nutzer Rechte zum Reditieren des Fahrtenbuches?
+		    if($tour_approved_int == "0"){//ist die Tour schon überprüft worden?
+			    if ($requested_accept == "1") {//soll die Tour bestätigt werden?
+				    //Tourdaten aktualisieren
+				    $sql = "UPDATE tour_table SET tour_approved=1, status='accepted' WHERE tour_id=$requested_job_id AND username='$requested_user_name'";
+				    if ($conn->query($sql) === TRUE) {
+					    //setze visuelles Feedback
+					    $status = "von Spedition angenommen";
+					    $info = '<div class="alert alert-success" role="alert">
+					    Auftrag erfolgreich bestätigt!
+					    </div>';
+					    
+					    //Transaktionsvorgang wird gestartet
+					    //alten Kontostand der Firma holen
+					    $sql = "SELECT * FROM company_information_table WHERE id=$job_scompanyID";
+					    $result = $conn->query($sql);
+					    if ($result->num_rows > 0) {
+						    while($row = $result->fetch_assoc()) {
+							    $tra_comp_bank_balance = $row["bank_balance"];
+						    }
+					    } else {
+						    die("receiver doesn't exist"); 
+					    }
+					    $tra_comp_bank_balance_conv = floatval($tra_comp_bank_balance);
+					    //Berechnung des Gewinnes der Firma durch die Tour
+					    $umsatz = (int)$income - ((int)$income*0.19 )-((int)$trailer_damage*100 );
+					    $tra_comp_bank_balance_new = $tra_comp_bank_balance_conv + $umsatz;
+					    //Cleanup hier weiter machen
+					    $sql = "INSERT INTO money_transfer (sender, receiver, message, amount, status) VALUES ('$departure_comp', '$job_s_found_comp_name', '$message',$umsatz, 'sent')";
 
 if ($conn->query($sql) === TRUE) {
 } else {
