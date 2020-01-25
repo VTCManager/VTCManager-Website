@@ -137,6 +137,27 @@ function notify_read(elmnt) {
 	xmlhttp.send();
 }
 </script>
+<script src="/basis_files/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#edeff5",
+      "text": "#838391"
+    },
+    "button": {
+      "background": "#4b81e8"
+    }
+  },
+  "theme": "classic",
+  "position": "bottom-right",
+  "content": {
+    "message": "Wir verwenden Cookies um das Erlebnis zu verbessern.",
+    "dismiss": "Alles klar!",
+    "link": "Mehr erfahren"
+  }
+});
+</script>
 <?php
 		}else{?>
 
@@ -205,6 +226,27 @@ function notify_read(elmnt) {
 	xmlhttp.send();
 }
 </script>
+<script src="/basis_files/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#edeff5",
+      "text": "#838391"
+    },
+    "button": {
+      "background": "#4b81e8"
+    }
+  },
+  "theme": "classic",
+  "position": "bottom-right",
+  "content": {
+    "message": "Wir verwenden Cookies um das Erlebnis zu verbessern.",
+    "dismiss": "Alles klar!",
+    "link": "Mehr erfahren"
+  }
+});
+</script>
 <?php	}
 	}else{ //eingeloggt aber nicht in einer Firma
 ?>
@@ -271,6 +313,27 @@ function notify_read(elmnt) {
 	xmlhttp.send();
 }
 </script>
+<script src="/basis_files/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#edeff5",
+      "text": "#838391"
+    },
+    "button": {
+      "background": "#4b81e8"
+    }
+  },
+  "theme": "classic",
+  "position": "bottom-right",
+  "content": {
+    "message": "Wir verwenden Cookies um das Erlebnis zu verbessern.",
+    "dismiss": "Alles klar!",
+    "link": "Mehr erfahren"
+  }
+});
+</script>
 <?php
 	}
 }else{
@@ -302,7 +365,27 @@ function notify_read(elmnt) {
         </div>
       </div>
     </nav>
-    <link rel="stylesheet" type="text/css" href="https://vtc.northwestvideo.de/datenschutz" />
+    <script src="/basis_files/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#edeff5",
+      "text": "#838391"
+    },
+    "button": {
+      "background": "#4b81e8"
+    }
+  },
+  "theme": "classic",
+  "position": "bottom-right",
+  "content": {
+    "message": "Wir verwenden Cookies um das Erlebnis zu verbessern.",
+    "dismiss": "Alles klar!",
+    "link": "Mehr erfahren"
+  }
+});
+</script>
 <?php
 	 }
 ?> 

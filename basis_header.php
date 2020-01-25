@@ -9,24 +9,4 @@
 <script type="text/javascript" src="https://vtc.northwestvideo.de/basis_files/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
-<script src="https://vtc.northwestvideo.de/basis_files/cookieconsent.min.js" data-cfasync="false"></script>
-<script>
-window.cookieconsent.initialise({
-  "palette": {
-    "popup": {
-      "background": "#edeff5",
-      "text": "#838391"
-    },
-    "button": {
-      "background": "#4b81e8"
-    }
-  },
-  "theme": "classic",
-  "position": "bottom-right",
-  "content": {
-    "message": "Wir verwenden Cookies um das Erlebnis zu verbessern.",
-    "dismiss": "Alles klar!",
-    "link": "Mehr erfahren"
-  }
-});
-</script>
+<link rel="stylesheet" type="text/css" href="/basis_files/cookieconsent.min.js" />
