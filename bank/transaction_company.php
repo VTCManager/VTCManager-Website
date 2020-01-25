@@ -101,8 +101,7 @@ if ($conn->query($sql) === TRUE) {
 	die("Fehler: Etwas ist schiefgelaufen.  Kontaktiere den Support!");
 }
 } else {
-	$sql = "UPDATE user_data SET bank_balance=$tra_receiver_bb_conv WHERE username='$receiver'";
-
+	$sql = "UPDATE user_data SET bank_balance=$tra_receiver_bb_new WHERE username='$receiver'";
 if ($conn->query($sql) === TRUE) {
     echo "Record updated successfully";
 } else {
