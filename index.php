@@ -2,12 +2,12 @@
 <html lang="de">
   <head>
 	  <title>VTCManager - ETS2 Manager</title>
-	  <?php include 'basis_header.php'; ?>  
+	  <?php include 'basis_header.php'; ?>
   </head>
   <body>
-	  
-	  <?php include 'navbar.php'; ?>  
-	  
+
+	  <?php include 'navbar.php'; ?>
+
 	  <div class="text-center">
   <img src="https://vtc.northwestvideo.de/media/images/main-ad-highway-w-trucks.png" class="rounded" alt="..." style="width:100%;">
 		  <br>
@@ -23,7 +23,7 @@ echo '<img src="https://vtc.northwestvideo.de/media/images/VTCM-Release-Month.pn
 }
 
 ?>
-		  
+
 </div>
 	  <div class="container my-5 p-5 z-depth-1">
 
@@ -65,7 +65,7 @@ echo '<img src="https://vtc.northwestvideo.de/media/images/VTCM-Release-Month.pn
 		  <hr>
 		  <div class="container mt-5 pt-5 pb-3 px-5 z-depth-1">
   <section class="text-center dark-grey-text">
-    
+
     <div class="row text-center d-flex justify-content-center my-5">
       <div class="col-lg-3 col-md-6 mb-4">
         <i class="fas fa-truck fa-3x mb-4 grey-text"></i>
@@ -88,26 +88,14 @@ echo '<img src="https://vtc.northwestvideo.de/media/images/VTCM-Release-Month.pn
         <p class="text-muted mb-0"></p>
       </div>
     </div>
-    
-  </section>
-			  
 
-</div>   
-		
+  </section>
+
 
 </div>
-	      <footer class="footer">
-        <div class="container">
-            <div class="col-md-9 social-media">
-                <p class="pull-left">
-                    <a href="https://vtc.northwestvideo.de/impressum">Impressum</a>|
-                    <a href="https://vtc.northwestvideo.de/datenschutz">Datenschutz &amp; Nutzungsbedingungen</a>
-                </p>
-            </div>
-            <div class="col-md-3">
-                <p class="pull-right">© NorthWestMedia 2019-2020</p>
-            </div>
-                    </div>
-    </footer>
+
+
+</div>
+	<?php include 'footer.php';?>
   </body>
 </html>

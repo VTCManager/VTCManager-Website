@@ -1,13 +1,13 @@
-<?php  
-$username_cookie = $_COOKIE["username"]; 
-$authCode_cookie = $_COOKIE["authWebToken"]; 
+<?php
+$username_cookie = $_COOKIE["username"];
+$authCode_cookie = $_COOKIE["authWebToken"];
 date_default_timezone_set('Europe/Berlin');
-$host = 'localhost:3306';     
-$conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager");  
-if(! $conn )  
-{  
-  die("2");  
-}  
+$host = 'localhost:3306';
+$conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager");
+if(! $conn )
+{
+  die("2");
+}
 
 $sql = "SELECT * FROM authCode_table WHERE Token='$authCode_cookie'";
 $result = $conn->query($sql);
@@ -45,7 +45,7 @@ if ($result->num_rows > 0) {
 		//	$last_seen_search = "online";
 		//}
 		$created_date_search = $row["created_date"];
-		
+
 		$created_date_search = date('d.m.Y', strtotime($created_date_search));
 		if ($userCompanyID_search == "0") {
 			$company_txt_search = "arbeitslos";
@@ -70,16 +70,16 @@ if ($result->num_rows > 0) {
     echo "Error: User not found";
 	die();
 }
-mysqli_close($conn); 
-?> 
+mysqli_close($conn);
+?>
 <!DOCTYPE html>
 <html lang="de">
   <head>
 	  <title><?php echo $username_search;?> - VTCManager</title>
-	  <?php include '../basis_header.php'; ?> 
+	  <?php include '../basis_header.php'; ?>
   </head>
   <body>
-	  <?php include '../navbar.php'; ?>  
+	  <?php include '../navbar.php'; ?>
 	  &nbsp;&nbsp;
 	  <div class="container">
 		  <h2><img src="<?php echo $profile_pic_url_search; ?>" class="profileViewAvatar"> <?php echo $username_search;?> </h2>
@@ -128,20 +128,8 @@ mysqli_close($conn);
 		<button type="button" class="btn btn-danger" onclick="window.location.href = '<?php echo "https://vtc.northwestvideo.de/account/delete";?>';">Account löschen</button>
             </div>
                     </div>
-		  
+
 	  </div>
-	      <footer class="footer">
-        <div class="container">
-            <div class="col-md-9 social-media">
-                <p class="pull-left">
-                    <a href="https://vtc.northwestvideo.de/impressum">Impressum</a>|
-                    <a href="https://vtc.northwestvideo.de/datenschutz">Datenschutz &amp; Nutzungsbedingungen</a>
-                </p>
-            </div>
-            <div class="col-md-3">
-                <p class="pull-right">© © NorthWestMedia 2019-2020</p>
-            </div>
-                    </div>
-    </footer>
+	   <?php include '../footer.php';?>
   </body>
 </html>

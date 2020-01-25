@@ -14,7 +14,7 @@
 	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
   </head>
   <body>
-	  <?php include 'navbar.php'; ?>  
+	  <?php include 'navbar.php'; ?>
 	  <div class="container">
 <h2>Impressum</h2>
 <p>Joschua Haß<br />
@@ -42,18 +42,6 @@ Die Darstellung dieser Website in fremden Frames ist nur mit schriftlicher Erlau
 § 4 Besondere Nutzungsbedingungen<br />
 Soweit besondere Bedingungen für einzelne Nutzungen dieser Website von den vorgenannten Paragraphen abweichen, wird an entsprechender Stelle ausdrücklich darauf hingewiesen. In diesem Falle gelten im jeweiligen Einzelfall die besonderen Nutzungsbedingungen.<p>Quelle: <a href="https://www.juraforum.de/impressum-generator/">Impressum Muster von JuraForum.de</a></p>
 	  </div>
-	      <footer class="footer">
-        <div class="container">
-            <div class="col-md-9 social-media">
-                <p class="pull-left">
-                    <a href="https://vtc.northwestvideo.de/impressum">Impressum</a>|
-                    <a href="https://vtc.northwestvideo.de/datenschutz">Datenschutz &amp; Nutzungsbedingungen</a>
-                </p>
-            </div>
-            <div class="col-md-3">
-                <p class="pull-right">© © NorthWestMedia 2019-2020</p>
-            </div>
-                    </div>
-    </footer>
+	     <?php include 'footer.php';?>
   </body>
 </html>
