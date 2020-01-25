@@ -138,7 +138,7 @@ if ($requested_comp_id == null) {
     var markers = new L.markerClusterGroup({maxClusterRadius: 80, disableClusteringAtZoom: 6, spiderfyOnMaxZoom: false});
 
     function getCoordinates() {
-		var ONE_HOUR = 60 * 60 * 1000; /* ms */
+		var ONE_MINUTE = 60 * 1000; /* ms */
 		var xmlhttp = new XMLHttpRequest();
 		xmlhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
@@ -150,7 +150,7 @@ if ($requested_comp_id == null) {
 				
                 user_count = myObj.length;
                 for (var a in myObj) {
-					if (((new Date) - new Date(myObj[a]["last_seen"])) < ONE_HOUR) {
+					if (((new Date) - new Date(myObj[a]["last_seen"])) < ONE_MINUTE) {
                     var markerCoordinates = game_coord_to_pixels(myObj[a]["coordinate_x"], myObj[a]["coordinate_y"]);
 					
 
