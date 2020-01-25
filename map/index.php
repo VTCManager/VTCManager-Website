@@ -160,7 +160,7 @@ if ($requested_comp_id == null) {
                             icon: navigationIcon,
                             userid: myObj[a]["userID"],
                             username: myObj[a]["username"]
-                        }).bindPopup("<a href='https://vtc.northwestvideo.de/account/?userid=" + myObj[a]["userID"] + "' target='_blank'>" + myObj[a]["username"] + "</a>");
+                        }).bindPopup("<a href='/account/?userid=" + myObj[a]["userID"] + "' target='_blank'>" + myObj[a]["username"] + "</a>");
 
                         markers.addLayer(marker);
                     }
