@@ -83,7 +83,7 @@ mysqli_close($conn);
 	  <div class="modal fade" id="createnewrank" tabindex="-1" role="dialog">
        <div class="modal-dialog" role="document">
            <div class="modal-content">
-               <form action="https://vtc.northwestvideo.de/company/create_rank" method="post" name="createnewrankForm" id="createnewrankForm" enctype="multipart/form-data">
+               <form action="/company/create_rank" method="post" name="createnewrankForm" id="createnewrankForm">
                    <div class="modal-header">
                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                   <h4 class="modal-title" id="myModalLabel">Neue Rolle erstellen</h4>
@@ -173,18 +173,6 @@ mysqli_close($conn);
                     </div>
 		  
 	  </div>
-	      <footer class="footer">
-        <div class="container">
-            <div class="col-md-9 social-media">
-                <p class="pull-left">
-                    <a href="https://vtc.northwestvideo.de/impressum">Impressum</a>|
-                    <a href="https://vtc.northwestvideo.de/datenschutz">Datenschutz &amp; Nutzungsbedingungen</a>
-                </p>
-            </div>
-            <div class="col-md-3">
-                <p class="pull-right">© © NorthWestMedia 2019-2020</p>
-            </div>
-                    </div>
-    </footer>
+	      <?php include '../footer.php'; ?> 
   </body>
 </html>

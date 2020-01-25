@@ -52,6 +52,8 @@ if ($result->num_rows > 0) {
 			$rank_name_tra = "Geschäftsführung";
 		}else if($rank_name == "driver"){
 			$rank_name_tra = "Fahrer";
+		}else{
+			$rank_name_tra = $rank_name;
 		}
 		$rank_salary = $row["salary"];
 		echo "<tr>";

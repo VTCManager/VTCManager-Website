@@ -66,10 +66,13 @@ $sql = "SELECT * FROM rank WHERE name='$userRank' AND forCompanyID=$userCompanyI
 if($EditEmployees != "1"){
 	die("no permission");
 }
-$sql = "INSERT INTO rank (name, forCompanyID, EditProfile, SeeLogbook, EditLogbook, SeeBank, UseBank, EditEmployees, EditSalary, salary, struct_id) VALUES ($requested_rank,$userCompanyID,0,0,0,0,0,0,0,$salary,0)";
+(int)$salary;
+$sql = "INSERT INTO rank (name, forCompanyID, EditProfile, SeeLogbook, EditLogbook, SeeBank, UseBank, EditEmployees, EditSalary, salary, struct_id) VALUES ('$requested_rank',$userCompanyID,0,0,0,0,0,0,0,$salary,0)";
 
 if ($conn->query($sql) === TRUE) {
 } else {
     die( "Error: " . $sql . "<br>" . $conn->error);
 }
+header("Location: https://vtc.northwestvideo.de/company/edit");
+	exit();
 ?>
