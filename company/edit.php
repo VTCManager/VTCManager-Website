@@ -83,17 +83,15 @@ mysqli_close($conn);
 	  <div class="modal fade" id="createnewrank" tabindex="-1" role="dialog">
        <div class="modal-dialog" role="document">
            <div class="modal-content">
-               <form action="https://vtc.northwestvideo.de/company/create_rank" method="post" name="createnewrankForm" id="createnewrankForm">
+               <form action="https://vtc.northwestvideo.de/company/create_rank" method="post" name="createnewrankForm" id="createnewrankForm" enctype="multipart/form-data">
                    <div class="modal-header">
                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                   <h4 class="modal-title" id="myModalLabel">Neue Rolle erstellen</h4>
                                           </div>
                    <div class="modal-body">
-                       
-                       Überweisen an
-                       <input type="text" class="form-control" name="receiver" id="receiver" placeholder="Name" autocomplete="off">
+                       <input type="text" class="form-control" name="name" id="name" placeholder="Name" autocomplete="off">
                        <div class="input-group">
-                           <input type="number" class="form-control" name="amount" id="amount" min="1" max="3000" placeholder="Gehalt" required="">
+                           <input type="number" class="form-control" name="salary" id="salary" min="1" max="3000" placeholder="Gehalt" required="">
                            <span class="input-group-addon">€</span>
                        </div>
                    </div>
