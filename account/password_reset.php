@@ -98,7 +98,7 @@ meter[value="4"]::-moz-meter-bar { background: green; }</style>
             <hr class="underline" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
 			
             
-            <form action="https://vtc.northwestvideo.de/api/web/account/save_new_password.php" method="post" name="registerform" id="account-register-form" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+            <form action="https://vtc.northwestvideo.de/api/web/account/save_new_password.php" method="post" name="registerform" id="account-register-form" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);" enctype="multipart/form-data">
 				<input type="hidden" value="<?php echo $email;?>" name="email" id="email" />
                 <input type="password" name="password" id="password" class="form-control" placeholder="Neues Passwort" maxlength="150" required="">
 				<meter max="4" id="password-strength"></meter>
