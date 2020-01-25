@@ -49,7 +49,7 @@ if ($result->num_rows > 0) {
 		$sql2 = "SELECT * FROM rank WHERE name='$rank_user' AND forCompanyID=$company";
 		$result2 = $conn->query($sql2);
 		if ($result2->num_rows > 0) {
-			while($row = $result->fetch_assoc()) {
+			while($row = $result2->fetch_assoc()) {
 				$EditLogbook = $row["EditLogbook"];
 			}
 		}
