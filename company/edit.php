@@ -80,6 +80,30 @@ mysqli_close($conn);
   <body>
 	  <?php include '../navbar.php'; ?>  
 	  &nbsp;&nbsp;
+	  <div class="modal fade" id="createnewrank" tabindex="-1" role="dialog">
+       <div class="modal-dialog" role="document">
+           <div class="modal-content">
+               <form action="https://vtc.northwestvideo.de/company/create_rank" method="post" name="createnewrankForm" id="createnewrankForm">
+                   <div class="modal-header">
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                  <h4 class="modal-title" id="myModalLabel">Neue Rolle erstellen</h4>
+                                          </div>
+                   <div class="modal-body">
+                       
+                       Überweisen an
+                       <input type="text" class="form-control" name="receiver" id="receiver" placeholder="Name" autocomplete="off">
+                       <div class="input-group">
+                           <input type="number" class="form-control" name="amount" id="amount" min="1" max="3000" placeholder="Gehalt" required="">
+                           <span class="input-group-addon">€</span>
+                       </div>
+                   </div>
+                   <div class="modal-footer">
+                       <button type="submit" class="btn btn-primary" name="submit" id="submit">Erstellen</button>
+                   </div>
+               </form>
+           </div>
+       </div>
+   </div>
 	  <div class="container">
 		  <h2><img src="<?php echo $Company_avatar; ?>" class="profileViewAvatar"> <?php echo $Company_name;?> </h2>
 		  <?php if($_GET['idc'] == "sc"){
@@ -131,6 +155,9 @@ mysqli_close($conn);
             </div>
 	<div class="tab-pane" id="rank">
 		<div class="vertical-scroll">
+			<div class="pull-rigt">
+				<a href="#" class="btn btn-default pull-right" data-toggle="modal" data-target="#createnewrank">Erstellen</a>
+			</div>
             <table class="table">
                 <thead>
                     <tr>
