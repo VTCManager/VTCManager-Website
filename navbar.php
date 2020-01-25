@@ -302,6 +302,7 @@ function notify_read(elmnt) {
         </div>
       </div>
     </nav>
+    <link rel="stylesheet" type="text/css" href="https://vtc.northwestvideo.de/datenschutz" />
 <?php
 	 }
 ?> 
