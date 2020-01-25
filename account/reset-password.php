@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="de" class="gr__vtcmanager_de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="de" class="gr__vtcmanager_de">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
         <meta name="theme-color" content="#ff8000">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,7 +33,7 @@
                 <input type="email" name="email" id="email" class="form-control" placeholder="E-Mail" value="" required="">
                 <input type="submit" name="submit" id="submitbtn" class="btn btn-default btn-block" value="Zurücksetzen">
                 <hr style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
-                <p>Du bist bereits ein VTC-Trucker? <a href="https://vtc.northwestvideo.de/account/login">Anmelden</a>.</p>
+                <p>Du bist bereits ein VTCM-Trucker? <a href="https://vtc.northwestvideo.de/account/login">Anmelden</a>.</p>
             </form>
         </div>
 	</div>
