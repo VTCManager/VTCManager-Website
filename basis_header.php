@@ -9,4 +9,4 @@
 <script type="text/javascript" src="https://vtc.northwestvideo.de/basis_files/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
-<link rel="stylesheet" type="text/css" href="/basis_files/cookieconsent.min.js" />
+<link rel="stylesheet" type="text/css" href="/basis_files/cookieconsent.min.css" />
