@@ -51,17 +51,8 @@ mysqli_close($conn);
 <!DOCTYPE html>
 <html lang="de">
   <head>
-	  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	  <title>Bank - VTCManager</title>
-	  <link rel="icon" href="https://vtc.northwestvideo.de/media/images/favicon.png" type="image/x-icon">
-	  <link rel="apple-touch-icon" href="https://vtc.northwestvideo.de/media/images/apple-icon.png">
-	  <link rel="stylesheet" type="text/css" href="https://vtc.northwestvideo.de/basis_files/bootstrap.min.css">
-	  <link rel="stylesheet" type="text/css" href="https://vtc.northwestvideo.de/basis_files/main.css">
-	  <link rel="stylesheet" type="text/css" href="https://vtc.northwestvideo.de/basis_files/vs.css">
-	  <script type="text/javascript" src="https://vtc.northwestvideo.de/basis_files/jquery.min.js"></script>
-	  <script type="text/javascript" src="https://vtc.northwestvideo.de/basis_files/bootstrap.min.js"></script>
-	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
-	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+	  <?php include '../basis_header.php'; ?> 
   </head>
   <body>
 	  <?php include '../navbar.php'; ?>
