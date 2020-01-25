@@ -56,11 +56,11 @@ if ($result->num_rows > 0) {
 				// output data of each row
 				while($row = $result->fetch_assoc()) {
 					$compname = $row["name"];
-					if ($rank != "owner") {
-						if ($rank == "driver"){
+					if ($rank_search != "owner") {
+						if ($rank_search == "driver"){
 							$rank_tr = "Fahrer";
 						}else{
-							$rank_tr = $rank;
+							$rank_tr = $rank_search;
 						}
 
 						$company_txt_search = "angestellt bei $compname als $rank_tr";
@@ -147,6 +147,8 @@ $sql = "SELECT * FROM career_table WHERE userID=$requested_user_id ORDER BY star
 						$career_job_search = "selbstständig bei $atCompanyname_search_2";
 					} else if ($career_job_search == "driver"){
 						$career_job_search = "Fahrer bei $atCompanyname_search_2";
+					}else {
+						$career_job_search = "$career_job_search bei $atCompanyname_search_2";
 					}
 					$start_date_search = date('d.m.Y', strtotime($start_date_search));
 					if ($end_date_search == "0000-00-00"){
