@@ -154,7 +154,8 @@ window.cookieconsent.initialise({
   "content": {
     "message": "Wir verwenden Cookies um das Erlebnis zu verbessern.",
     "dismiss": "Alles klar!",
-    "link": "Mehr erfahren"
+    "link": "Mehr erfahren",
+    "href": "https://vtc.northwestvideo.de/datenschutz"
   }
 });
 </script>
@@ -243,7 +244,8 @@ window.cookieconsent.initialise({
   "content": {
     "message": "Wir verwenden Cookies um das Erlebnis zu verbessern.",
     "dismiss": "Alles klar!",
-    "link": "Mehr erfahren"
+    "link": "Mehr erfahren",
+    "href": "https://vtc.northwestvideo.de/datenschutz"
   }
 });
 </script>
@@ -330,7 +332,8 @@ window.cookieconsent.initialise({
   "content": {
     "message": "Wir verwenden Cookies um das Erlebnis zu verbessern.",
     "dismiss": "Alles klar!",
-    "link": "Mehr erfahren"
+    "link": "Mehr erfahren",
+    "href": "https://vtc.northwestvideo.de/datenschutz"
   }
 });
 </script>
@@ -382,7 +385,8 @@ window.cookieconsent.initialise({
   "content": {
     "message": "Wir verwenden Cookies um das Erlebnis zu verbessern.",
     "dismiss": "Alles klar!",
-    "link": "Mehr erfahren"
+    "link": "Mehr erfahren",
+    "href": "https://vtc.northwestvideo.de/datenschutz"
   }
 });
 </script>
