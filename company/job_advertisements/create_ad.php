@@ -79,41 +79,20 @@ mysqli_close($conn);
   border-left: 6px solid #4CAF50;">
   <p><strong>&nbsp;Transaktion erfolgreich gesendet!</strong></p>
 </div></div>';}?>
-	  <div class="container">
-		  <h1>Stellenanzeigen</h1>
-		  <table class="table" style="max-height: 150px !important; overflow: auto !important;">
-					<a href="/company/job_advertisements/create_ad" class="btn btn-default pull-right" data-toggle="modal">Erstellen</a>
-                    <thead>
-                    <tr>
-                        <td>Rolle</td>
-                        <td>Erstellt am</td>
-						<td>Status</td>
-						<td></td>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-						<?php
-						$sql = "SELECT * FROM job_market WHERE byCompanyID=$company_id ORDER by created_date DESC";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        $jm_rank = $row["rank"];
-		$jm_date = $row["created_date"];
-		$jm_status = $row["status"];
-		$jm_id = $row["AdID"];
-		echo '<tr><td>'.$jm_rank.'</td><td>'.$jm_date.'</td><td>'.$jm_status.'</td>';
-		echo <<<EOT
-		<td><button type="button" onclick="window.location='http://vtc.northwestvideo.de/company/job_advertisements/edit?id=$jm_id';" class="btn btn-info">Bearbeiten</button></td></tr> 
-		EOT;
-    }
-} else {
-}
-?>
-                    </tbody>
-                </table>
+           <div class="container">
+               <form action="https://vtc.northwestvideo.de/company/job_advertisements/create" method="post" name="new_ad" id="new_ad">
+                   <div class="modal-header">
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                  <h4 class="modal-title" id="myModalLabel">Neue Stellenanzeige erstellen</h4>
+                                          </div>
+                   <div class="modal-body">
+                       <input class="form-control" type="text" id="rank" placeholder="Rolle (muss bereits existieren)" aria-label="Rolle">
+                       <textarea class="form-control" name="message" id="message"placeholder="Stellenbeschreibung" rows="10"></textarea>
+                   </div>
+                   <div class="modal-footer">
+                       <button type="submit" class="btn btn-primary" name="submit" id="submit">Erstellen</button>
+                   </div>
+               </form>
 </div>
 	      <footer class="footer">
         <div class="container">
