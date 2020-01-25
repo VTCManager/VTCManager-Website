@@ -21,6 +21,7 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
         $email_found = $row["email_address"];
+	    $username_found = $row["username"];
     }
 } else {
     echo "0 results";
@@ -44,7 +45,7 @@ $subject = 'Passwort zurücksetzen'; // Give the email a subject
 $message = '
  
 ------------------------
-Username: '.$username.'
+Username: '.$username_found.'
 ------------------------
  
 Please click this link to reset you password:
