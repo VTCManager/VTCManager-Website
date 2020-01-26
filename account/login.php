@@ -38,7 +38,7 @@ die();
             <h1 style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">Anmelden</h1>
             <hr class="underline" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
             
-            <form action="https://vtc.northwestvideo.de/api/web/account/login.php" method="post" name="loginform" id="account-login-form" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+            <form action="/api/web/account/login.php" method="post" name="loginform" id="account-login-form" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
                 <input type="text" name="username" id="username" class="form-control" placeholder="Benutzername" value="" required="">
                 <input type="password" name="password" id="password" class="form-control" placeholder="Passwort" maxlength="150" required="">
                 <p><a href="https://vtc.northwestvideo.de/account/reset-password">Passwort vergessen?</a></p>

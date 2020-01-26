@@ -68,10 +68,10 @@ $sql = "SELECT * FROM user_data WHERE username='$user'";
 setcookie("authWebToken",$token,time() + 86400,'/');
 setcookie("username",$user,time() + 86400, '/');
 if ($lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) == "de") {
-	header("Location: https://vtc.northwestvideo.de/account/logbook/"); 
+	header("Location: /account/logbook/"); 
 	exit;
 }else{
-	header("Location: https://vtc.northwestvideo.de/en/account/logbook/"); 
+	header("Location: /en/account/logbook/"); 
 	exit;
 }
 

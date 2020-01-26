@@ -1,3 +1,4 @@
+
 <?php  
 $requested_comp_id= $_GET['companyid'];
 $host = 'localhost:3306';     
