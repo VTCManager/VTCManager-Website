@@ -90,6 +90,19 @@ mysqli_close($conn);
   <head>
 	  <title><?php echo $name;?> - VTCManager</title>
 	  <?php include '../basis_header.php'; ?> 
+	  <script>
+function delete_entry(elmnt) {
+	var save_val = $(elmnt).attr("data-id");
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		console.log(xmlhttp.response);
+			
+	};
+	xmlhttp.open("GET", "remove_employee.php?username="+save_val, true);
+	xmlhttp.send();
+	window.location.reload();
+}
+</script>
   </head>
   <body>
 	  <?php include '../navbar.php'; ?>  
@@ -135,11 +148,13 @@ echo file_get_contents("https://vtc.northwestvideo.de/media/articles/company_abo
                     <tr>
                         <td>Mitarbeiter</td>
                         <td></td>
+			<td></td>
                     </tr>
                     </thead>
 
                     <tbody>
 						<?php
+						
 						$sql = "SELECT * FROM user_data WHERE userCompanyID=$requested_comp_id ORDER BY rank DESC";
 $result = $conn->query($sql);
 
@@ -156,7 +171,13 @@ if ($result->num_rows > 0) {
 			$user_rank_translation = "Fahrer";}else{
 			$user_rank_translation = $user_rank;
 		}
-		echo '<tr><td><a href="https://vtc.northwestvideo.de/account/?userid='.$userid.'"><img class="profilePicture" src="'.$profile_pic_url.'"> '.$username.'</a></td><td>'.$user_rank_translation.'</td></tr>';
+		if($EditEmployees == "1" && $requested_comp_id == $company){
+		    $delete_bt = '<td><i class="fa fa-trash" onclick="delete_entry(this);" aria-hidden="true" data-id="'.$found_tour_username.','.$found_tour.'" style="cursor: pointer;"></i></td>';
+		    echo '<tr data-id="'.$username.'"><td><a href="https://vtc.northwestvideo.de/account/?userid='.$userid.'"><img class="profilePicture" src="'.$profile_pic_url.'"> '.$username.'</a></td><td>'.$user_rank_translation.'</td><td>'.$delete_bt.'</td></tr>';
+		    }else{
+			echo '<tr><td><a href="https://vtc.northwestvideo.de/account/?userid='.$userid.'"><img class="profilePicture" src="'.$profile_pic_url.'"> '.$username.'</a></td><td>'.$user_rank_translation.'</td></tr>';
+			}
+		
     }
 } else {
     echo "Keine Mitarbeiter";
