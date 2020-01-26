@@ -7,9 +7,9 @@ if(! $conn )
   die("2");  
 }  
 if ($requested_comp_id == "0") {
-	$sql = "SELECT username, userID, coordinate_x, coordinate_y, rotation, last_seen FROM user_data WHERE coordinate_x!=0 AND coordinate_y!=0";
+	$sql = "SELECT username, coordinate_x, coordinate_y, rotation, last_seen FROM user_data WHERE coordinate_x!=0 AND coordinate_y!=0";
 } else {
-	$sql = "SELECT username, userID, coordinate_x, coordinate_y, rotation, last_seen FROM user_data WHERE userCompanyID=$requested_comp_id AND coordinate_x!=0 AND coordinate_y!=0";
+	$sql = "SELECT username, coordinate_x, coordinate_y, rotation, last_seen FROM user_data WHERE userCompanyID=$requested_comp_id AND coordinate_x!=0 AND coordinate_y!=0";
 }
 
 $result = $conn->query($sql);

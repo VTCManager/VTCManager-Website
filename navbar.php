@@ -357,7 +357,7 @@ window.cookieconsent.initialise({
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-			  <li><a> Home</a></li>
+			  <li><ahref="https://vtc.northwestvideo.de/"> Home</a></li>
 			  <li><a href="#"> Team</a></li>                   
                       </ul>
 			<ul class="nav navbar-nav navbar-right">
