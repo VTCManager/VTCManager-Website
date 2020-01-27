@@ -100,7 +100,7 @@ function delete_entry(elmnt) {
 	};
 	xmlhttp.open("GET", "remove_employee.php?username="+save_val, true);
 	xmlhttp.send();
-	window.location.reload();
+	//window.location.reload();
 }
 </script>
   </head>
@@ -172,7 +172,7 @@ if ($result->num_rows > 0) {
 			$user_rank_translation = $user_rank;
 		}
 		if($EditEmployees == "1" && $requested_comp_id == $company){
-		    $delete_bt = '<td><i class="fa fa-trash" onclick="delete_entry(this);" aria-hidden="true" data-id="'.$found_tour_username.','.$found_tour.'" style="cursor: pointer;"></i></td>';
+		    $delete_bt = '<td><i class="fa fa-trash" onclick="delete_entry(this);" aria-hidden="true" data-id="'.$username.'" style="cursor: pointer;"></i></td>';
 		    echo '<tr data-id="'.$username.'"><td><a href="https://vtc.northwestvideo.de/account/?userid='.$userid.'"><img class="profilePicture" src="'.$profile_pic_url.'"> '.$username.'</a></td><td>'.$user_rank_translation.'</td><td>'.$delete_bt.'</td></tr>';
 		    }else{
 			echo '<tr><td><a href="https://vtc.northwestvideo.de/account/?userid='.$userid.'"><img class="profilePicture" src="'.$profile_pic_url.'"> '.$username.'</a></td><td>'.$user_rank_translation.'</td></tr>';
