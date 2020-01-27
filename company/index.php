@@ -103,6 +103,20 @@ function delete_entry(elmnt) {
 	//window.location.reload();
 }
 </script>
+	  <script>
+function change_rank(elmnt) {
+	var username_val = $(elmnt).attr("data-id");
+	var rank_val = elmnt.value;
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		console.log(xmlhttp.response);
+			
+	};
+	xmlhttp.open("GET", "change_employee_rank.php?username="+username_val+"&rank="+rank_val, true);
+	xmlhttp.send();
+	window.location.reload();
+}
+</script>
   </head>
   <body>
 	  <?php include '../navbar.php'; ?>  
@@ -148,7 +162,10 @@ echo file_get_contents("https://vtc.northwestvideo.de/media/articles/company_abo
                     <tr>
                         <td>Mitarbeiter</td>
                         <td></td>
-			<td></td>
+						<?php if($EditEmployees == "1" && $requested_comp_id == $company){ ?>
+						<td>Neue Rolle zuweisen</td>
+						<?php }?>
+						<td></td>
                     </tr>
                     </thead>
 
@@ -173,7 +190,26 @@ if ($result->num_rows > 0) {
 		}
 		if($EditEmployees == "1" && $requested_comp_id == $company){
 		    $delete_bt = '<td><i class="fa fa-trash" onclick="delete_entry(this);" aria-hidden="true" data-id="'.$username.'" style="cursor: pointer;"></i></td>';
-		    echo '<tr data-id="'.$username.'"><td><a href="https://vtc.northwestvideo.de/account/?userid='.$userid.'"><img class="profilePicture" src="'.$profile_pic_url.'"> '.$username.'</a></td><td>'.$user_rank_translation.'</td><td>'.$delete_bt.'</td></tr>';
+		    echo '<tr data-id="'.$username.'"><td><a href="https://vtc.northwestvideo.de/account/?userid='.$userid.'"><img class="profilePicture" src="'.$profile_pic_url.'">'.$username.'</a></td><td>'.$user_rank_translation.'</td>';
+			?>
+						<td>
+
+<select onchange="change_rank(this)" data-id="<?php echo $username;?>">
+	<?php 
+			$sql = "SELECT * FROM rank WHERE forCompanyID=$requested_comp_id";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        $name_rank_comp = $row["name"];
+		echo '<option value="'.$name_rank_comp.'">'.$name_rank_comp.'</option>';
+    }
+} else {
+}
+	?>
+</select></td><td><?php echo $delete_bt; ?></td></tr>
+				
+				<?php
 		    }else{
 			echo '<tr><td><a href="https://vtc.northwestvideo.de/account/?userid='.$userid.'"><img class="profilePicture" src="'.$profile_pic_url.'"> '.$username.'</a></td><td>'.$user_rank_translation.'</td></tr>';
 			}
