@@ -45,7 +45,7 @@ if ($passwd==$hash) {
 		die("Error: Serverside2");
     }
 	$sql = "INSERT INTO authCode_table (User, Token, Expires)
-VALUES ('$user', '$token', '')";
+VALUES ('$user', '$token', NOW())";
 	if ($conn->query($sql) === TRUE) {
 			echo $token;
 	} else {

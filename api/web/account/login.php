@@ -48,7 +48,7 @@ if ($passwdhsh==$hash) {
 	$date = date('Y-m-d H:i:s');
 	$date = strtotime($date . ' +1 day');
 	$sql = "INSERT INTO authCode_table (User, Token, Expires)
-VALUES ('$user', '$token', '$date')";
+VALUES ('$user', '$token', NOW())";
 	if ($conn->query($sql) === TRUE) {
 	} else {
 		
