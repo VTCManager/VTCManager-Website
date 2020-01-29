@@ -63,7 +63,11 @@ $sql = "SELECT * FROM user_data WHERE username='$user'";
     // output data of each row
 		while($row = $result->fetch_assoc()) {
         $userCompanyID = $row["userCompanyID"];
+	$userLangID = $row["lang"];
     }
+    }
+if($userLangID != "de"){
+    die("you're accessing this website on the wrong translation. Your language code is: "+$userLangID);
     }
 setcookie("authWebToken",$token,time() + 86400,'/');
 setcookie("username",$user,time() + 86400, '/');
