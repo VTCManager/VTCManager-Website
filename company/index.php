@@ -172,12 +172,12 @@ echo file_get_contents("https://vtc.northwestvideo.de/media/articles/company_abo
                     <tbody>
 						<?php
 						
-						$sql = "SELECT * FROM user_data WHERE userCompanyID=$requested_comp_id ORDER BY rank DESC";
-$result = $conn->query($sql);
+						$sql2 = "SELECT * FROM user_data WHERE userCompanyID=$requested_comp_id ORDER BY rank DESC";
+$result2 = $conn->query($sql2);
 
-if ($result->num_rows > 0) {
+if ($result2->num_rows > 0) {
     // output data of each row
-    while($row = $result->fetch_assoc()) {
+    while($row = $result2->fetch_assoc()) {
         $username = utf8_encode($row["username"]);
 		$userid = $row["userID"];
 		$user_rank = $row["rank"];
@@ -196,7 +196,7 @@ if ($result->num_rows > 0) {
 
 <select onchange="change_rank(this)" data-id="<?php echo $username;?>">
 	<?php 
-			$sql = "SELECT * FROM rank WHERE forCompanyID=$requested_comp_id";
+			$sql = "SELECT * FROM rank WHERE forCompanyID=$requested_comp_id AND name NOT IN ('$user_rank')";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
@@ -251,3 +251,4 @@ mysqli_close($conn); ?>
     </footer>
   </body>
 </html>
+
