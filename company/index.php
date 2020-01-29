@@ -8,9 +8,6 @@ if(! $conn )
   die("2");  
 }  
 echo $requested_comp_name;
-if($requested_comp_name == "M&D%20Transporte"){
-	$requested_comp_name == "M&D Transporte";
-}
 if(isset($_GET['companyname'])) {
     $sql = "SELECT * FROM company_information_table WHERE name='$requested_comp_name'";
 $result = $conn->query($sql);
