@@ -257,7 +257,9 @@ if ($result->num_rows > 0) {
 				<h2>$byCompanyname - $rank gesucht!</h2>
 				<span class="text" style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 5;"><a href="https://vtc.northwestvideo.de/job_ad?id=$AdID">$job_desc</a></span><hr>
 				EOT;
-		}}?>
+		}}else{
+		echo "Es wurden keine aktiven Stellenanzeigen gefunden";
+		}?>
 			
 			<br>
 				
