@@ -89,7 +89,7 @@ mysqli_close($conn);
                         <td>Erstellt am</td>
 						<td>Status</td>
 						<td></td>
-						<td>Link</td>
+						<td></td>
                     </tr>
                     </thead>
 
@@ -107,7 +107,7 @@ if ($result->num_rows > 0) {
 		$jm_id = $row["AdID"];
 		echo '<tr><td>'.$jm_rank.'</td><td>'.$jm_date.'</td><td>'.$jm_status.'</td>';
 		echo <<<EOT
-		<td><button type="button" onclick="window.location='http://vtc.northwestvideo.de/company/job_advertisements/edit?id=$jm_id';" class="btn btn-info">Bearbeiten</button></td><td><a href="https://vtc.northwestvideo.de/job_ad?id=$jm_id" >Link</a></td></tr> 
+		<td><button type="button" onclick="window.location='http://vtc.northwestvideo.de/company/job_advertisements/edit?id=$jm_id';" class="btn btn-info">Bearbeiten</button></td><td><a href="https://vtc.northwestvideo.de/job_ad?id=$jm_id" ><i class="fas fa-share-square"></i>Link</a></td></tr> 
 		EOT;
     }
 } else {
