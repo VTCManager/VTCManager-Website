@@ -128,6 +128,7 @@ function change_rank(elmnt) {
 <ul id="myTab" class="nav nav-tabs">
             <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-info"></i> Über uns</a></li>
             <li class=""><a href="#employees" data-toggle="tab"><i class="fa fa-users"></i> Mitarbeiter</a></li>
+	    <li class=""><a href="#jobs" data-toggle="tab"><i class="fa fa-id-card"></i> Jobs</a></li>
             <li class=""><a href="#contact" data-toggle="tab"><i class="fa fa-id-card"></i> Kontakt</a></li>
                     </ul>
 <div id="myTabContent" class="tab-content">
@@ -215,7 +216,7 @@ if ($result->num_rows > 0) {
 } else {
     echo "Keine Mitarbeiter";
 }
-mysqli_close($conn); ?>
+ ?>
                     </tbody>
                 </table>
             </div>
@@ -231,8 +232,36 @@ mysqli_close($conn); ?>
 				
 
                                                                 </div>
-                    </div>
-	  </div>
+								<div class="tab-pane" id="jobs">
+			<?php 
+			$sql2 = "SELECT * FROM job_market WHERE status='open' AND byCompanyID=$requested_comp_id";
+		$result2 = $conn->query($sql2);
+		if ($result2->num_rows > 0) {
+			// output data of each row
+			while($row = $result2->fetch_assoc()) {
+				$byCompanyID = $row["byCompanyID"];
+				$AdID = $row["AdID"];
+				$rank = $row["rank"];
+				$sql2 = "SELECT * FROM company_information_table WHERE id=$requested_comp_id";
+		$result2 = $conn->query($sql2);
+		if ($result2->num_rows > 0) {
+			// output data of each row
+			while($row = $result2->fetch_assoc()) {
+				$byCompanyname = $row["name"];
+			}
+		}
+				$job_desc = file_get_contents("https://vtc.northwestvideo.de/media/articles/ad_description/".$AdID.'.txt');
+				
+				echo <<<EOT
+				<h2>$byCompanyname - $rank gesucht!</h2>
+				<span class="text" style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 5;"><a href="https://vtc.northwestvideo.de/job_ad?id=$AdID">$job_desc</a></span><hr>
+				EOT;
+		}}?>
+			
+			<br>
+				
+
+                                                                </div>
 	      <footer class="footer">
         <div class="container">
             <div class="col-md-9 social-media">
@@ -248,4 +277,5 @@ mysqli_close($conn); ?>
     </footer>
   </body>
 </html>
+<?php mysqli_close($conn); ?>
 
