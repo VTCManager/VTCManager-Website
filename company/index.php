@@ -148,9 +148,9 @@ echo file_get_contents("https://vtc.northwestvideo.de/media/articles/company_abo
 ?><br>
 					<i class="fas fa-users"></i> Mitarbeiter: <?php echo $employees;?> <br>
 					<i class="fas fa-truck-loading"></i> abgeschlossene Touren: <?php echo $tours_done;?> <br>
-					<i class="fas fa-road"></i> zurückgelegte Strecke: <?php echo $driven_km;?> km<br>
-					<i class="fas fa-trophy"></i> Rang(Strecke): <?php echo $rank_route;?> <br>
-					<i class="fas fa-trophy"></i> Rang(Kapital): <?php echo $rank_money;?> <br>
+					<!--<i class="fas fa-road"></i> zurückgelegte Strecke: <?php echo $driven_km;?> km<br>-->
+					<!--<i class="fas fa-trophy"></i> Rang(Strecke): <?php echo $rank_route;?> <br>-->
+					<!--<i class="fas fa-trophy"></i> Rang(Kapital): <?php echo $rank_money;?> <br>-->
                 </p>
             </div>
 
