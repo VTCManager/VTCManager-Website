@@ -159,7 +159,7 @@ echo file_get_contents("https://vtc.northwestvideo.de/media/articles/company_abo
                     <thead>
                     <tr>
                         <td>Mitarbeiter</td>
-                        <td></td>
+                        <td>aktuelle Rolle</td>
 						<?php if($EditEmployees == "1" && $requested_comp_id == $company){ ?>
 						<td>Neue Rolle zuweisen</td>
 						<?php }?>
@@ -186,7 +186,8 @@ if ($result2->num_rows > 0) {
 			$user_rank_translation = "Fahrer";}else{
 			$user_rank_translation = $user_rank;
 		}
-		if($EditEmployees == "1" && $requested_comp_id == $company){
+		if($EditEmployees == "1" && $requested_comp_id == $company && $username != $found_token_owner){
+			
 		    $delete_bt = '<td><i class="fa fa-trash" onclick="delete_entry(this);" aria-hidden="true" data-id="'.$username.'" style="cursor: pointer;"></i></td>';
 		    echo '<tr data-id="'.$username.'"><td><a href="https://vtc.northwestvideo.de/account/?userid='.$userid.'"><img class="profilePicture" src="'.$profile_pic_url.'">'.$username.'</a></td><td>'.$user_rank_translation.'</td>';
 			?>
@@ -209,7 +210,7 @@ if ($result->num_rows > 0) {
 				
 				<?php
 		    }else{
-			echo '<tr><td><a href="https://vtc.northwestvideo.de/account/?userid='.$userid.'"><img class="profilePicture" src="'.$profile_pic_url.'"> '.$username.'</a></td><td>'.$user_rank_translation.'</td></tr>';
+			echo '<tr><td><a href="https://vtc.northwestvideo.de/account/?userid='.$userid.'"><img class="profilePicture" src="'.$profile_pic_url.'"> '.$username.'</a></td><td>'.$user_rank_translation.'</td><td></td><td></td><td></td></tr>';
 			}
 		
     }
