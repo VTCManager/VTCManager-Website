@@ -96,7 +96,7 @@ function delete_entry(elmnt) {
 	};
 	xmlhttp.open("GET", "remove_employee.php?username="+save_val, true);
 	xmlhttp.send();
-	//window.location.reload();
+	window.location.reload();
 }
 </script>
 	  <script>
