@@ -49,7 +49,7 @@ meter[value="4"]::-moz-meter-bar { background: blue; }</style>
 			
             
             <form action="https://vtc.northwestvideo.de/company/create/step2" method="post" name="registerform" id="account-register-form">
-                <input type="text" name="company_name" id="company_name" class="form-control" placeholder="Speditionsname" maxlength="100" value="" required="" autofocus="">
+                <input type="text" name="company_name" id="company_name" class="form-control" placeholder="Speditionsname" maxlength="100" value="" required="" autofocus="" >
                 <input type="checkbox" name="comp_a_exist" value="true"> Meine Spedition war zuvor bei einer ähnlichen Speditionsverwaltungssoftware vertreten <br>
                 <input type="submit" name="submit" id="submitbtn" class="btn btn-default btn-block" value="Erstellen">
             </form>

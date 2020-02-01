@@ -18,7 +18,7 @@
 	  <script>
 		  $(function() {
     $("#skill_input").autocomplete({
-        source: "https://vtc.northwestvideo.de/search_company_get.php",
+        source: "/search_company_get.php",
         select: function( event, ui ) {
             event.preventDefault();
             $("#skill_input").val(ui.item.id);
@@ -31,8 +31,10 @@
 	  <?php include 'navbar.php'; ?>  
 	      <footer class="footer">
         <div class="container">
-			<input class="form-control" type="text" id="skill_input" placeholder="Suche..." aria-label="Search">
-			<input class="form-control" type="button" name="button" onclick="location.href = 'https://vtc.northwestvideo.de/company/?companyid='+document.getElementById('skill_input').value;" value="Öffnen"/>
+	  <form action="/company/" method="post" name="createnewrankForm" id="createnewrankForm">
+			<input class="form-control" type="text" name="compname" id="skill_input" placeholder="Suche..." aria-label="Search">
+			<button type="submit" class="btn btn-primary" name="submit" id="submit">Öffnen</button>
+			</form>
 			<?php $sql = "SELECT * FROM job_market WHERE status='open' ORDER BY RAND() LIMIT 20";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0) {
