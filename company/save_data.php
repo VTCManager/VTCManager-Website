@@ -84,7 +84,7 @@ if(isset($_POST["submit"])) {
     }
 }
 // Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
+if ($_FILES["fileToUpload"]["size"] > 5000000) {
 	$conn->close();
     header("Location: /company/edit?idc=pic_too_lg");
 	exit();
