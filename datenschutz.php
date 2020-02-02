@@ -93,7 +93,7 @@ E-Mail: service@northwestvideo.de</p>
 <p>2.1 Strengstens verboten sind Hassreden, Spam, die Verbreitung privater Informationen, das Teilen von Schadprogrammen, Deskriminierungen, (ernstgemeinte) Beleidigungen, Missbrauch, Drohungen, das Teilen von pornografischen oder sexuellen Beiträgen, Rassismus und sonstige unzulässige Inhalte.</p>
 <p>2.2 Du trägst die Verantwortung über sämtliche Vorgänge über deinen Account, sowie dessen Sicherheit.</p>
 <p>2.3 Du verpflichtest dich, sämtliche Gesetze einzuhalten.</p>
-<p>2.4 Du darfst unsere Dienste nicht modifizieren oder anpassen</p>
+<p>2.4 Du darfst unsere Dienste oder sonstige zur eigenen privaten Verwendung von uns zur Verfügung gestellte Programme nicht modifizieren, ändern oder anpassen</p>
 <p>2.5 Du bist verpflichtet, sämtliche Verstöße gegen die Nutzungsbedingungen zu melden.&nbsp;</p>
 <p>2.6 Das maximale Einkommen bei Touren liegt bei 150€/km.</p>
 <p>2.7 Du stimmst zu, keine ETS2-Modifikationen zu nutzen, die das maximale Einkommen erhöhen.</p>
