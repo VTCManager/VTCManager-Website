@@ -78,6 +78,25 @@ E-Mail: service@northwestvideo.de</p>
 <p style="box-sizing: border-box; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: Roboto, sans-serif; font-size: 15px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255); text-decoration-style: initial; text-decoration-color: initial;">Wir verwenden die CSS-Framework MDBootstrap des Anbieters MDBootstrap Kijowska 7, 03-738 Warszawa, Polen. Datenschutzerklärung:
   <a href="https://mdbootstrap.com/general/privacy-policy/">https://mdbootstrap.com/general/privacy-policy/</a> .
 </p><p class="seal"><a href="https://datenschutz-generator.de/?l=de" title="Rechtstext von Dr. Schwenke - für weitere Informationen bitte anklicken." target="_blank">Erstellt mit kostenlosem Datenschutz-Generator.de von Dr. Thomas Schwenke</a></p>
+<h1>Nutzungsbedingungen</h1>
+<p><strong>1. Registrierung</strong></p>
+<p>1.1 Mit der Registrierung auf unserer Seite stimmst du allen folgenden Bedingungen zu.</p>
+<p>1.2 Um dich zu Registrieren, musst du ein Mindestalter von 16 Jahren oder die Zustimmung deiner Eltern haben.</p>
+<p>1.3 Das Erstellen eines Accounts nach einer Ausschließung, das Erstellen von mehreren Accounts, sowie die Übertragung und Teilung deines Accounts sind nicht erlaubt.</p>
+<p>1.4 Dein Konto ist Eigentum von VTCManager.</p>
+<p>1.5 Du hast das Recht, deinen Account von uns sperren/löschen zu lassen, sowie Informationen und Daten über dich von uns zu löschen.</p>
+<p>1.6 Wir behalten uns das Recht vor, bei Verstößen gegen unsere Bestimmungen, deine Daten/Account unbegründet zu sperren bzw. zu löschen.</p>
+<p>
+  <br>
+</p>
+<p><strong>2. Nutzung unseres Dienstes</strong></p>
+<p>2.1 Strengstens verboten sind Hassreden, Spam, die Verbreitung privater Informationen, das Teilen von Schadprogrammen, Deskriminierungen, (ernstgemeinte) Beleidigungen, Missbrauch, Drohungen, das Teilen von pornografischen oder sexuellen Beiträgen, Rassismus und sonstige unzulässige Inhalte.</p>
+<p>2.2 Du trägst die Verantwortung über sämtliche Vorgänge über deinen Account, sowie dessen Sicherheit.</p>
+<p>2.3 Du verpflichtest dich, sämtliche Gesetze einzuhalten.</p>
+<p>2.4 Du darfst unsere Dienste nicht modifizieren oder anpassen</p>
+<p>2.5 Du bist verpflichtet, sämtliche Verstöße gegen die Nutzungsbedingungen zu melden.&nbsp;</p>
+<p>2.6 Das maximale Einkommen bei Touren liegt bei 150€/km.</p>
+<p>2.7 Du stimmst zu, keine ETS2-Modifikationen zu nutzen, die das maximale Einkommen erhöhen.</p>
 
 
             </div>
