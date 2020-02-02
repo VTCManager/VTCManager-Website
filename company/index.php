@@ -258,7 +258,8 @@ if ($result->num_rows > 0) {
 				EOT;
 		}}else{
 		echo "Es wurden keine aktiven Stellenanzeigen gefunden";
-		}?>
+		}
+		mysqli_close($conn);?>
 			
 			<br>
 				
@@ -279,5 +280,4 @@ if ($result->num_rows > 0) {
     </footer>
   </body>
 </html>
-<?php mysqli_close($conn); ?>
 
