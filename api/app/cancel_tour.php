@@ -24,9 +24,24 @@ if ($result->num_rows > 0) {
         $found_user = $row["User"];
     }
 } else {
+    mysqli_close($conn); 
+    $host = 'localhost:3306';     
+$conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager_en");
+
+$sql = "SELECT User FROM authCode_table WHERE Token='$authcode'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        $found_user = $row["User"];
+    }
+} else {
     echo "0 results";
 	die();
 }
+}
+
 $sql = "UPDATE tour_table SET status='canceled' WHERE username='$found_user' AND tour_id='$job_id'";
 
 if ($conn->query($sql) === TRUE) {

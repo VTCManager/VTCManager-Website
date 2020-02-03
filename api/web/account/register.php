@@ -74,8 +74,8 @@ if ($conn->query($sql) === TRUE) {
 } else {
     die("Error updating record: " . $conn->error);
 }
-$sql = "INSERT INTO user_data (user_id, username, full_name, email_address, password_hash, activate_hash)
-VALUES ($old_num, '$username', '$full_name', '$email', '$passwdhsh', '$activate_hash')";//Nutzer registrieren
+$sql = "INSERT INTO user_data (user_id, username, full_name, email_address, password_hash, activate_hash, language)
+VALUES ($old_num, '$username', '$full_name', '$email', '$passwdhsh', '$activate_hash', 'de')";//Nutzer registrieren
 if ($conn->query($sql) === TRUE) {
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
