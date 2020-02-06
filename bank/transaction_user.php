@@ -74,7 +74,7 @@ $sql = "SELECT * FROM user_data WHERE username='$receiver'";
 
 $date = date('Y-m-d H:i:s');
 $tra_receiver_bb_conv = floatval($tra_receiver_bb);
-$tra_receiver_bb_new = $tra_receiver_bb_conv + $amount_conv;
+$$tra_receiver_bb_new = $$tra_receiver_bb_conv + $amount_conv;
 $bank_balance_user_conv = floatval($bank_balance_user);
 $bank_balance_new = $bank_balance_user_conv - $amount_conv;
 if ($receiver_comp == true){

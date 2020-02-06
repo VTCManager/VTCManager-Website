@@ -80,26 +80,26 @@ if ($conn->query($sql) === TRUE) {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-			<a class="navbar-brand">
-				<img src="/media/images/favicon.png" height="30" alt="mdb logo" >
+			<a class="navbar-brand" href="https://vtc.northwestvideo.de/">
+				<img src="https://vtc.northwestvideo.de/media/images/favicon.png" height="30" alt="mdb logo" >
 			</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-			  <li><a href="/account/logbook/"><i class="fa fa-book"></i> Fahrtenbuch</a></li>
+			  <li><a href="https://vtc.northwestvideo.de/account/logbook/"><i class="fa fa-book"></i> Fahrtenbuch</a></li>
                                     <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-building"></i> Spedition<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="/company/?companyid=<?php echo $company; ?>">Profil</a></li>
-				  <li><a href="/map/?companyid=<?php echo $company; ?>">Livemap</a></li>
-                <li><a href="/company/logbook/">Fahrtenbuch</a></li>
-				  <li><a href="/company/job_advertisements/">Stellenanzeigen</a></li>
-                                <li><a href="/company/edit">Einstellungen</a></li>
+                <li><a href="https://vtc.northwestvideo.de/company/?companyid=<?php echo $company; ?>">Profil</a></li>
+				  <li><a href="https://vtc.northwestvideo.de/map/?companyid=<?php echo $company; ?>">Livemap</a></li>
+                <li><a href="https://vtc.northwestvideo.de/company/logbook/">Fahrtenbuch</a></li>
+				  <li><a href="https://vtc.northwestvideo.de/company/job_advertisements/">Stellenanzeigen</a></li>
+                                <li><a href="https://vtc.northwestvideo.de/company/edit">Einstellungen</a></li>
                                                               </ul>
             </li>
-			  <li><a href="/bank/"><i class="fa fa-bank"></i> Bank</a></li>
-                        <li><a href="/map"><i class="fas fa-map-marker-alt"></i> Karte</a></li>
+			  <li><a href="https://vtc.northwestvideo.de/bank/"><i class="fa fa-bank"></i> Bank</a></li>
+                        <li><a href="https://vtc.northwestvideo.de/map"><i class="fas fa-map-marker-alt"></i> Karte</a></li>
                             <!--<li><a href="#"><i class="fa fa-calendar"></i> Events </a></li>-->
             
                        
@@ -114,10 +114,10 @@ if ($conn->query($sql) === TRUE) {
                   <?php echo $found_token_owner; ?><span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="/account/?userid=<?php echo $navbar_userid; ?>">Mein Profil</a></li>
-                <li><a href="/api/app/VTCMInstaller-latest.exe">Download</a></li>
+                <li><a href="https://vtc.northwestvideo.de/account/?userid=<?php echo $navbar_userid; ?>">Mein Profil</a></li>
+                <li><a href="https://vtc.northwestvideo.de/api/app/VTCMInstaller-latest.exe">Download</a></li>
                 <li><a href="https://discord.gg/AnhpaX6">Hilfe &amp; Support</a></li>
-                <li><a href="/api/web/account/logout.php">Ausloggen</a></li>
+                <li><a href="https://vtc.northwestvideo.de/api/web/account/logout.php">Ausloggen</a></li>
               </ul>
             </li>
                                               </ul>
@@ -137,28 +137,6 @@ function notify_read(elmnt) {
 	xmlhttp.send();
 }
 </script>
-<script src="/basis_files/cookieconsent.min.js" data-cfasync="false"></script>
-<script>
-window.cookieconsent.initialise({
-  "palette": {
-    "popup": {
-      "background": "#edeff5",
-      "text": "#838391"
-    },
-    "button": {
-      "background": "#4b81e8"
-    }
-  },
-  "theme": "classic",
-  "position": "bottom-right",
-  "content": {
-    "message": "Wir verwenden Cookies um das Erlebnis zu verbessern.",
-    "dismiss": "Alles klar!",
-    "link": "Mehr erfahren",
-    "href": "/datenschutz"
-  }
-});
-</script>
 <?php
 		}else{?>
 
@@ -171,25 +149,25 @@ window.cookieconsent.initialise({
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-			<a class="navbar-brand">
-				<img src="/media/images/favicon.png" height="30" alt="mdb logo">
+			<a class="navbar-brand" href="https://vtc.northwestvideo.de/">
+				<img src="https://vtc.northwestvideo.de/media/images/favicon.png" height="30" alt="mdb logo">
 			</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-			  <li><a href="/account/logbook/"><i class="fa fa-book"></i> Fahrtenbuch</a></li>
+			  <li><a href="https://vtc.northwestvideo.de/account/logbook/"><i class="fa fa-book"></i> Fahrtenbuch</a></li>
 			  <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-building"></i> Meine Spedition<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="/company/?companyid=<?php echo $company; ?>">Profil</a></li>
-                <li><a href="/map/?companyid=<?php echo $company; ?>">Livemap</a></li>
-				  <?php if($SeeLogbook == "1"){echo '<li><a href="/company/logbook/">Fahrtenbuch</a></li>';} ?>
-				  <?php if($EditProfile == "1"){echo '<li><a href="/company/edit">Einstellungen</a></li>';} ?>
+                <li><a href="https://vtc.northwestvideo.de/company/?companyid=<?php echo $company; ?>">Profil</a></li>
+                <li><a href="https://vtc.northwestvideo.de/map/?companyid=<?php echo $company; ?>">Livemap</a></li>
+				  <?php if($SeeLogbook == "1"){echo '<li><a href="https://vtc.northwestvideo.de/company/logbook/">Fahrtenbuch</a></li>';} ?>
+				  <?php if($EditProfile == "1"){echo '<li><a href="https://vtc.northwestvideo.de/company/edit">Einstellungen</a></li>';} ?>
                                                               </ul>
             </li>
-			  <li><a href="/bank/"><i class="fa fa-bank"></i> Bank</a></li>
-                        <li><a href="/map/"><i class="fas fa-map-marker-alt"></i> Karte</a></li>
+			  <li><a href="https://vtc.northwestvideo.de/bank/"><i class="fa fa-bank"></i> Bank</a></li>
+                        <li><a href="https://vtc.northwestvideo.de/map/"><i class="fas fa-map-marker-alt"></i> Karte</a></li>
                             <!--<li><a href="#"><i class="fa fa-calendar"></i> Events </a></li>-->
             
                        
@@ -204,10 +182,10 @@ window.cookieconsent.initialise({
                   <?php echo $found_token_owner; ?><span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="/account/?userid=<?php echo $navbar_userid; ?>">Mein Profil</a></li>
-                <li><a href="/api/app/VTCMInstaller-latest.exe">Download</a></li>
+                <li><a href="https://vtc.northwestvideo.de/account/?userid=<?php echo $navbar_userid; ?>">Mein Profil</a></li>
+                <li><a href="https://vtc.northwestvideo.de/api/app/VTCMInstaller-latest.exe">Download</a></li>
                 <li><a href="https://discord.gg/AnhpaX6">Hilfe &amp; Support</a></li>
-                <li><a href="/api/web/account/logout.php">Ausloggen</a></li>
+                <li><a href="https://vtc.northwestvideo.de/api/web/account/logout.php">Ausloggen</a></li>
               </ul>
             </li>
                                               </ul>
@@ -226,28 +204,6 @@ function notify_read(elmnt) {
 	xmlhttp.open("GET", "notifications/notify_read.php?notify_id="+save_val, true);
 	xmlhttp.send();
 }
-</script>
-<script src="/basis_files/cookieconsent.min.js" data-cfasync="false"></script>
-<script>
-window.cookieconsent.initialise({
-  "palette": {
-    "popup": {
-      "background": "#edeff5",
-      "text": "#838391"
-    },
-    "button": {
-      "background": "#4b81e8"
-    }
-  },
-  "theme": "classic",
-  "position": "bottom-right",
-  "content": {
-    "message": "Wir verwenden Cookies um das Erlebnis zu verbessern.",
-    "dismiss": "Alles klar!",
-    "link": "Mehr erfahren",
-    "href": "/datenschutz"
-  }
-});
 </script>
 <?php	}
 	}else{ //eingeloggt aber nicht in einer Firma
@@ -261,23 +217,23 @@ window.cookieconsent.initialise({
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-			<a class="navbar-brand">
-				<img src="/media/images/favicon.png" height="30" alt="mdb logo">
+			<a class="navbar-brand" href="https://vtc.northwestvideo.de/">
+				<img src="https://vtc.northwestvideo.de/media/images/favicon.png" height="30" alt="mdb logo">
 			</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-			  <li><a href="/account/logbook/"><i class="fa fa-book"></i> Fahrtenbuch</a></li>
+			  <li><a href="https://vtc.northwestvideo.de/account/logbook/"><i class="fa fa-book"></i> Fahrtenbuch</a></li>
 			  <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-building"></i> Arbeitsmarkt<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-building"></i> Arbeitsmarkt<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="/search_company">Spedition finden</a></li>
-                <li><a href="/company/create">Spedition erstellen</a></li>
+                <li><a href="https://vtc.northwestvideo.de/search_company">Spedition finden</a></li>
+                <li><a href="https://vtc.northwestvideo.de/company/create">Spedition erstellen</a></li>
                                                               </ul>
             </li>
-			  <li><a href="/bank/"><i class="fa fa-bank"></i> Bank</a></li>
-                        <li><a href="/map/"><i class="fas fa-map-marker-alt"></i> Karte</a></li>
+			  <li><a href="https://vtc.northwestvideo.de/bank/"><i class="fa fa-bank"></i> Bank</a></li>
+                        <li><a href="https://vtc.northwestvideo.de/map/"><i class="fas fa-map-marker-alt"></i> Karte</a></li>
                             <!--<li><a href="#"><i class="fa fa-calendar"></i> Events </a></li>-->
             
                        
@@ -292,10 +248,10 @@ window.cookieconsent.initialise({
                   <?php echo $found_token_owner; ?><span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="/account/?userid=<?php echo $navbar_userid; ?>">Mein Profil</a></li>
-                <li><a href="/api/app/VTCMInstaller-latest.exe">Download</a></li>
+                <li><a href="https://vtc.northwestvideo.de/account/?userid=<?php echo $navbar_userid; ?>">Mein Profil</a></li>
+                <li><a href="https://vtc.northwestvideo.de/api/app/VTCMInstaller-latest.exe">Download</a></li>
                 <li><a href="https://discord.gg/AnhpaX6">Hilfe &amp; Support</a></li>
-                <li><a href="/api/web/account/logout.php">Ausloggen</a></li>
+                <li><a href="https://vtc.northwestvideo.de/api/web/account/logout.php">Ausloggen</a></li>
               </ul>
             </li>
                                               </ul>
@@ -314,28 +270,6 @@ function notify_read(elmnt) {
 	xmlhttp.open("GET", "notifications/notify_read.php?notify_id="+save_val, true);
 	xmlhttp.send();
 }
-</script>
-<script src="/basis_files/cookieconsent.min.js" data-cfasync="false"></script>
-<script>
-window.cookieconsent.initialise({
-  "palette": {
-    "popup": {
-      "background": "#edeff5",
-      "text": "#838391"
-    },
-    "button": {
-      "background": "#4b81e8"
-    }
-  },
-  "theme": "classic",
-  "position": "bottom-right",
-  "content": {
-    "message": "Wir verwenden Cookies um das Erlebnis zu verbessern.",
-    "dismiss": "Alles klar!",
-    "link": "Mehr erfahren",
-    "href": "/datenschutz"
-  }
-});
 </script>
 <?php
 	}
@@ -350,46 +284,24 @@ window.cookieconsent.initialise({
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-			<a class="navbar-brand">
-				<img src="/media/images/favicon.png" height="30" alt="mdb logo">
+			<a class="navbar-brand" href="https://vtc.northwestvideo.de/">
+				<img src="https://vtc.northwestvideo.de/media/images/favicon.png" height="30" alt="mdb logo">
 			</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-			  <li><ahref="https://vtc.northwestvideo.de/"> Home</a></li>
+			  <li><a href="https://vtc.northwestvideo.de/"> Home</a></li>
 			  <li><a href="#"> Team</a></li>                   
                       </ul>
 			<ul class="nav navbar-nav navbar-right">
-                                    <li><a class="highlighted" href="/account/register">Registrieren</a></li>
-            <li><a href="/account/login">Einloggen</a></li>
+                                    <li><a class="highlighted" href="https://vtc.northwestvideo.de/account/register">Registrieren</a></li>
+            <li><a href="https://vtc.northwestvideo.de/account/login">Einloggen</a></li>
 
                       </ul>
         </div>
       </div>
     </nav>
-    <script src="/basis_files/cookieconsent.min.js" data-cfasync="false"></script>
-<script>
-window.cookieconsent.initialise({
-  "palette": {
-    "popup": {
-      "background": "#edeff5",
-      "text": "#838391"
-    },
-    "button": {
-      "background": "#4b81e8"
-    }
-  },
-  "theme": "classic",
-  "position": "bottom-right",
-  "content": {
-    "message": "Wir verwenden Cookies um das Erlebnis zu verbessern.",
-    "dismiss": "Alles klar!",
-    "link": "Mehr erfahren",
-    "href": "/datenschutz"
-  }
-});
-</script>
 <?php
 	 }
 ?> 

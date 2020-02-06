@@ -1,5 +1,5 @@
 <?php  
-$requested_rank= $_GET['rank'];
+$requested_rank= $_POST['rank'];
 $host = 'localhost:3306';     
 $conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager");  
 if(! $conn )  

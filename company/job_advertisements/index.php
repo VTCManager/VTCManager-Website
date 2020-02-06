@@ -53,23 +53,15 @@ mysqli_close($conn);
   <head>
 	  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	  <title>Stellenanzeigen - VTCManager</title>
-	  <?php include '../../basis_header.php'; ?> 
-	  <!-- jQuery library -->
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	  <!-- jQuery UI library -->
-	  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-	  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-	  <script>
-		  $(function() {
-    $("#rank").autocomplete({
-        source: "https://vtc.northwestvideo.de/company/job_advertisements/search_ranks_get.php?comp_id=<?php echo $company_id; ?>",
-        select: function( event, ui ) {
-            event.preventDefault();
-            $("#rank").val(ui.item.id);
-        }
-    });
-});
-</script>
+	  <link rel="icon" href="https://vtc.northwestvideo.de/media/images/favicon.png" type="image/x-icon">
+	  <link rel="apple-touch-icon" href="https://vtc.northwestvideo.de/media/images/apple-icon.png">
+	  <link rel="stylesheet" type="text/css" href="https://vtc.northwestvideo.de/basis_files/bootstrap.min.css">
+	  <link rel="stylesheet" type="text/css" href="https://vtc.northwestvideo.de/basis_files/main.css">
+	  <link rel="stylesheet" type="text/css" href="https://vtc.northwestvideo.de/basis_files/vs.css">
+	  <script type="text/javascript" src="https://vtc.northwestvideo.de/basis_files/jquery.min.js"></script>
+	  <script type="text/javascript" src="https://vtc.northwestvideo.de/basis_files/bootstrap.min.js"></script>
+	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
   </head>
   <body>
 	  <?php include '../../navbar.php'; ?>  
@@ -79,16 +71,34 @@ mysqli_close($conn);
   border-left: 6px solid #4CAF50;">
   <p><strong>&nbsp;Transaktion erfolgreich gesendet!</strong></p>
 </div></div>';}?>
+	  <div class="modal fade" id="new_ad" tabindex="-1" role="dialog">
+       <div class="modal-dialog" role="document">
+           <div class="modal-content">
+               <form action="https://vtc.northwestvideo.de/company/job_advertisements/create" method="post" name="new_ad" id="new_ad">
+                   <div class="modal-header">
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                  <h4 class="modal-title" id="myModalLabel">Neue Stellenanzeige erstellen</h4>
+                                          </div>
+                   <div class="modal-body">
+                       <input type="text" class="form-control" name="rank" id="rank" placeholder="Rolle (muss bereits existieren)">
+                       <textarea class="form-control" name="message" id="message"placeholder="Stellenbeschreibung" rows="10"></textarea>
+                   </div>
+                   <div class="modal-footer">
+                       <button type="submit" class="btn btn-primary" name="submit" id="submit">Erstellen</button>
+                   </div>
+               </form>
+           </div>
+       </div>
+   </div>
 	  <div class="container">
 		  <h1>Stellenanzeigen</h1>
 		  <table class="table" style="max-height: 150px !important; overflow: auto !important;">
-					<a href="/company/job_advertisements/create_ad" class="btn btn-default pull-right" data-toggle="modal">Erstellen</a>
+					<a href="#" class="btn btn-default pull-right" data-toggle="modal" data-target="#new_ad">Erstellen</a>
                     <thead>
                     <tr>
                         <td>Rolle</td>
                         <td>Erstellt am</td>
 						<td>Status</td>
-						<td></td>
 						<td></td>
                     </tr>
                     </thead>
@@ -107,7 +117,7 @@ if ($result->num_rows > 0) {
 		$jm_id = $row["AdID"];
 		echo '<tr><td>'.$jm_rank.'</td><td>'.$jm_date.'</td><td>'.$jm_status.'</td>';
 		echo <<<EOT
-		<td><button type="button" onclick="window.location='http://vtc.northwestvideo.de/company/job_advertisements/edit?id=$jm_id';" class="btn btn-info">Bearbeiten</button></td><td><a href="https://vtc.northwestvideo.de/job_ad?id=$jm_id" ><i class="fas fa-share-square"></i>Link</a></td></tr> 
+		<td><button type="button" onclick="window.location='http://vtc.northwestvideo.de/company/job_advertisements/edit?id=$jm_id';" class="btn btn-info">Bearbeiten</button></td></tr> 
 		EOT;
     }
 } else {

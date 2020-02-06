@@ -1,15 +1,15 @@
-<?php
+<?php  
 if(!isset($_COOKIE['authWebToken'])) {
 	die("404");
 }
-$username_cookie = $_COOKIE["username"];
+$username_cookie = $_COOKIE["username"]; 
 $authCode_cookie = $_COOKIE["authWebToken"];
-$host = 'localhost:3306';
-$conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager");
-if(! $conn )
-{
-  die("2");
-}
+$host = 'localhost:3306';     
+$conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager");  
+if(! $conn )  
+{  
+  die("2");  
+}  
 
 $sql = "SELECT * FROM authCode_table WHERE Token='$authCode_cookie'";
 		$result = $conn->query($sql);
@@ -46,16 +46,25 @@ $sql = "SELECT * FROM company_information_table WHERE id=$company_id";
 			}
 		} else {
 		}
-mysqli_close($conn);
-?>
+mysqli_close($conn); 
+?> 
 <!DOCTYPE html>
 <html lang="de">
   <head>
+	  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	  <title>Bank - VTCManager</title>
-	  <?php include '../basis_header.php'; ?> 
+	  <link rel="icon" href="https://vtc.northwestvideo.de/media/images/favicon.png" type="image/x-icon">
+	  <link rel="apple-touch-icon" href="https://vtc.northwestvideo.de/media/images/apple-icon.png">
+	  <link rel="stylesheet" type="text/css" href="https://vtc.northwestvideo.de/basis_files/bootstrap.min.css">
+	  <link rel="stylesheet" type="text/css" href="https://vtc.northwestvideo.de/basis_files/main.css">
+	  <link rel="stylesheet" type="text/css" href="https://vtc.northwestvideo.de/basis_files/vs.css">
+	  <script type="text/javascript" src="https://vtc.northwestvideo.de/basis_files/jquery.min.js"></script>
+	  <script type="text/javascript" src="https://vtc.northwestvideo.de/basis_files/bootstrap.min.js"></script>
+	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
   </head>
   <body>
-	  <?php include '../navbar.php'; ?>
+	  <?php include '../navbar.php'; ?>  
 	  &nbsp;&nbsp;
 	  <?php if($_GET['idc'] == "tra_sc"){
 	echo '<div class="container"><div class="success" style="background-color: #ddffdd;
@@ -71,7 +80,7 @@ mysqli_close($conn);
                                                   <h4 class="modal-title" id="myModalLabel">Überweisung von meinem Privatkonto</h4>
                                           </div>
                    <div class="modal-body">
-
+                       
                        Überweisen an
                        <input type="text" class="form-control" name="receiver" id="receiver" placeholder="Nutzer/Firma" autocomplete="off">
                        <div class="input-group">
@@ -118,7 +127,7 @@ mysqli_close($conn);
 	<?php if($SeeBank == "1"){
 	?>
             <li class=""><a href="#company" data-toggle="tab"><i class="fa fa-briefcase"></i> Firmenkonto</a></li>
-	<?php
+	<?php 
 	 }
 	?>
             <li class=""><a href="#credits" data-toggle="tab"><i class="fa fa-bullhorn"></i> Kredite</a></li>
@@ -129,7 +138,7 @@ mysqli_close($conn);
 									<a href="#" class="btn btn-default pull-right" data-toggle="modal" data-target="#transactionprivat">Überweisen</a>
 									<p>aktueller Kontostand: <?php echo $bank_balance_user;?>€ </p>
 									<table class="table" style="max-height: 150px !important; overflow: auto !important;">
-
+					
                     <thead>
                     <tr>
                         <td>Absender</td>
@@ -174,7 +183,7 @@ if ($result->num_rows > 0) {
 	?>
 				<p>aktueller Kontostand: <?php echo $found_company_bank_balance;?>€ </p>
                 <table class="table" style="max-height: 150px !important; overflow: auto !important;">
-
+					
                     <thead>
                     <tr>
                         <td>Absender</td>
@@ -235,6 +244,18 @@ mysqli_close($conn); ?>
     </div>
   </div>
 </div>
-	   <?php include '../footer.php';?>
+	      <footer class="footer">
+        <div class="container">
+            <div class="col-md-9 social-media">
+                <p class="pull-left">
+                    <a href="https://vtc.northwestvideo.de/impressum">Impressum</a>|
+                    <a href="https://vtc.northwestvideo.de/datenschutz">Datenschutz &amp; Nutzungsbedingungen</a>
+                </p>
+            </div>
+            <div class="col-md-3">
+                <p class="pull-right">© © NorthWestMedia 2019-2020</p>
+            </div>
+                    </div>
+    </footer>
   </body>
 </html>

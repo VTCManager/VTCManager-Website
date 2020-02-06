@@ -62,13 +62,13 @@ fwrite($myfile, nl2br($user_about));
 fclose($myfile);
 if(!file_exists($_FILES['fileToUpload']['tmp_name']) || !is_uploaded_file($_FILES['fileToUpload']['tmp_name'])) {
 	$conn->close();
-    header("Location: /company/edit?idc=sc");
+    header("Location: https://vtc.northwestvideo.de/company/edit?idc=sc");
 	exit();
 }
 $target_dir = "../media/company_profile_pictures/";
 $nameofile = $_FILES["fileToUpload"]["name"];
 $ext = end((explode(".", $nameofile)));
-$target_file = $target_dir . basename($userCompanyID.'.'.$ext);
+$target_file = $target_dir . basename($username_cookie.'.'.$ext);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 // Check if image file is a actual image or fake image
@@ -79,21 +79,21 @@ if(isset($_POST["submit"])) {
         $uploadOk = 1;
     } else {
 		$conn->close();
-        header("Location: /company/edit?idc=pic_not_img");
+        header("Location: https://vtc.northwestvideo.de/company/edit?idc=pic_not_img");
 	exit();
     }
 }
 // Check file size
-if ($_FILES["fileToUpload"]["size"] > 5000000) {
+if ($_FILES["fileToUpload"]["size"] > 500000) {
 	$conn->close();
-    header("Location: /company/edit?idc=pic_too_lg");
+    header("Location: https://vtc.northwestvideo.de/company/edit?idc=pic_too_lg");
 	exit();
 }
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 && $imageFileType != "gif" ) {
 	$conn->close();
-    header("Location: /company/edit?idc=ic_format");
+    header("Location: https://vtc.northwestvideo.de/company/edit?idc=ic_format");
 	exit();
 }
 // Check if $uploadOk is set to 0 by an error
@@ -105,11 +105,11 @@ if ($uploadOk == 0) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
     } else {
 		$conn->close();
-        header("Location: /company/edit?idc=server_fail");
+        header("Location: https://vtc.northwestvideo.de/company/edit?idc=server_fail");
 	exit();
     }
 }
-$sql = "UPDATE company_information_table SET company_pic_url='/media/company_profile_pictures/$userCompanyID.$ext' WHERE id=$userCompanyID";
+$sql = "UPDATE company_information_table SET company_pic_url='https://vtc.northwestvideo.de/media/company_profile_pictures/$userCompanyID.$ext' WHERE id=$userCompanyID";
 
 if ($conn->query($sql) === TRUE) {
     echo "Record updated successfully";
@@ -118,6 +118,7 @@ if ($conn->query($sql) === TRUE) {
 }
 
 $conn->close();
-header("Location: /company/edit?idc=sc");
+$conn->close();
+header("Location: https://vtc.northwestvideo.de/company/edit?idc=sc");
 	exit();
 ?>

@@ -25,7 +25,6 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
         $hash = $row["password_hash"];
-	$user_language = $row["language"];
     }
 } else {
     echo "Error: User_Invalid";
@@ -33,7 +32,6 @@ if ($result->num_rows > 0) {
 }
 if ($passwd==$hash) {
 	mysqli_close($conn); 
-	if($user_language =="de"){
     $token = bin2hex(random_bytes(64));
 	$conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager");  
 	if(! $conn )  
@@ -47,34 +45,12 @@ if ($passwd==$hash) {
 		die("Error: Serverside2");
     }
 	$sql = "INSERT INTO authCode_table (User, Token, Expires)
-VALUES ('$user', '$token', NOW())";
+VALUES ('$user', '$token', '')";
 	if ($conn->query($sql) === TRUE) {
 			echo $token;
 	} else {
 		
 		die();
-	}
-    }else if ($user_language =="en"){
-	$token = bin2hex(random_bytes(64));
-	$conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager_en");  
-	if(! $conn )  
-	{  
-		die("2");  
-	}  
-	$sql = "SELECT * FROM authCode_table WHERE Token='$token'";
-	$result = $conn->query($sql);
-	if ($result->num_rows > 0) {
-    // output data of each row
-		die("Error: Serverside2");
-    }
-	$sql = "INSERT INTO authCode_table (User, Token, Expires)
-VALUES ('$user', '$token', NOW())";
-	if ($conn->query($sql) === TRUE) {
-			echo $token;
-	} else {
-		
-		die();
-	}
 	}
 	
 } else {

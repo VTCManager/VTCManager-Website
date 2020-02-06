@@ -74,8 +74,8 @@ if ($conn->query($sql) === TRUE) {
 } else {
     die("Error updating record: " . $conn->error);
 }
-$sql = "INSERT INTO user_data (user_id, username, full_name, email_address, password_hash, activate_hash, language)
-VALUES ($old_num, '$username', '$full_name', '$email', '$passwdhsh', '$activate_hash', 'de')";//Nutzer registrieren
+$sql = "INSERT INTO user_data (user_id, username, full_name, email_address, password_hash, activate_hash)
+VALUES ($old_num, '$username', '$full_name', '$email', '$passwdhsh', '$activate_hash')";//Nutzer registrieren
 if ($conn->query($sql) === TRUE) {
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
@@ -106,8 +106,8 @@ if(! $conn )
 {  
   die("2");  
 }  
-$sql = "INSERT INTO user_data (userID, userCompanyID, username, profile_pic_url, last_tour_id, rank, lang)
-VALUES ('$old_num', '0', '$username', 'https://vtc.northwestvideo.de/media/profile_pictures/default_avatar.png', '0', 'driver', 'de')";
+$sql = "INSERT INTO user_data (userID, userCompanyID, username, profile_pic_url, last_tour_id, rank)
+VALUES ('$old_num', '0', '$username', 'https://vtc.northwestvideo.de/media/profile_pictures/default_avatar.png', '0', 'driver')";
 
 if ($conn->query($sql) === TRUE) {
 	$myfile = fopen("../../../media/articles/profil_about_me/$old_num.txt", "w") or die("Unable to open file!");

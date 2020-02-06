@@ -41,6 +41,9 @@ if( $result->num_rows > 0 ){
 		case "application.declined":
 			echo '<li class="'.$class_type.'" onclick="notify_read(this);" value="'.$id.'"><a href="#">Bewerbung abgelehnt bei '.$row["eventbyUser"].'</a></li>';
 			break;
+		case "new.salary":
+			echo '<li class="'.$class_type.'" onclick="notify_read(this);" value="'.$id.'"><a href="#">Dein Gehalt ist da!</a></li>';
+			break;
 	}
 	}
 }else{

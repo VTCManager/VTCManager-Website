@@ -53,14 +53,16 @@ if ($result->num_rows > 0) {
 		}else if($rank_name == "driver"){
 			$rank_name_tra = "Fahrer";
 		}else{
-			$rank_name_tra = $rank_name;
-		}
+		    $rank_name_tra = $rank_name;
+		    }
 		$rank_salary = $row["salary"];
 		echo "<tr>";
 		echo <<<EOT
 		<td>$rank_name_tra</td>
 		<td>$rank_salary €</td>
-		<td><button type="button" onclick="window.location='http://vtc.northwestvideo.de/company/rank_edit?rank=$rank_name';" class="btn btn-info">Bearbeiten</button></td>
+		<td><form action="/company/rank_edit" method="post">
+		<button class="btn btn-info" type="submit" name="rank" value="$rank_name" class="btn-link">Bearbeiten</button></td>
+		</form></td>
 		</tr>
 		EOT;
     }

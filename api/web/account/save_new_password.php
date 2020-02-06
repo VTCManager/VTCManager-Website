@@ -11,7 +11,7 @@ foreach ($_POST as $key => $value) {
             break;
     }
 }
-if ($passwd=="" or $email=="") {
+if ($username=="" or $passwd=="" or $email=="") {
 	die("Error:1");
 }
 $passwdhsh = hash('sha256',$passwd);

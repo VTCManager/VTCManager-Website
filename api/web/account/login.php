@@ -48,7 +48,7 @@ if ($passwdhsh==$hash) {
 	$date = date('Y-m-d H:i:s');
 	$date = strtotime($date . ' +1 day');
 	$sql = "INSERT INTO authCode_table (User, Token, Expires)
-VALUES ('$user', '$token', NOW())";
+VALUES ('$user', '$token', '$date')";
 	if ($conn->query($sql) === TRUE) {
 	} else {
 		
@@ -63,19 +63,15 @@ $sql = "SELECT * FROM user_data WHERE username='$user'";
     // output data of each row
 		while($row = $result->fetch_assoc()) {
         $userCompanyID = $row["userCompanyID"];
-	$userLangID = $row["lang"];
     }
-    }
-if($userLangID != "de"){
-    die("you're accessing this website on the wrong translation. Your language code is: "+$userLangID);
     }
 setcookie("authWebToken",$token,time() + 86400,'/');
 setcookie("username",$user,time() + 86400, '/');
 if ($lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2) == "de") {
-	header("Location: /account/logbook/"); 
+	header("Location: https://vtc.northwestvideo.de/account/logbook/"); 
 	exit;
 }else{
-	header("Location: /en/account/logbook/"); 
+	header("Location: https://vtc.northwestvideo.de/en/account/logbook/"); 
 	exit;
 }
 

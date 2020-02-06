@@ -24,26 +24,8 @@ if ($result->num_rows > 0) {
         $user = $row["User"];
     }
 } else {
-    mysqli_close($conn); 
-    $host = 'localhost:3306';     
-$conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager_en");  
-if(! $conn )  
-{  
-  die("2");  
-}  
-
-$sql = "SELECT User FROM authCode_table WHERE Token='$authCode'";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        $user = $row["User"];
-    }
-} else {
     echo "Error: Token_Invalid";
 	die();
-}
 }
 	$sql = "SELECT * FROM user_data WHERE username='$user'";
 	$result = $conn->query($sql);

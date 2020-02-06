@@ -1,13 +1,17 @@
 <?php  
 $requested_comp_id= $_GET['companyid'];
-$requested_comp_name= $_POST["compname"];
+$requested_comp_name= $_GET['companyname'];
 $host = 'localhost:3306';     
 $conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager");  
 if(! $conn )  
 {  
   die("2");  
 }  
-if(isset($_POST["compname"])) {
+echo $requested_comp_name;
+if($requested_comp_name == "M&D%20Transporte"){
+	$requested_comp_name == "M&D Transporte";
+}
+if(isset($_GET['companyname'])) {
     $sql = "SELECT * FROM company_information_table WHERE name='$requested_comp_name'";
 $result = $conn->query($sql);
 
@@ -86,33 +90,6 @@ mysqli_close($conn);
   <head>
 	  <title><?php echo $name;?> - VTCManager</title>
 	  <?php include '../basis_header.php'; ?> 
-	  <script>
-function delete_entry(elmnt) {
-	var save_val = $(elmnt).attr("data-id");
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function() {
-		console.log(xmlhttp.response);
-			
-	};
-	xmlhttp.open("GET", "remove_employee.php?username="+save_val, true);
-	xmlhttp.send();
-	window.location.reload();
-}
-</script>
-	  <script>
-function change_rank(elmnt) {
-	var username_val = $(elmnt).attr("data-id");
-	var rank_val = elmnt.value;
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function() {
-		console.log(xmlhttp.response);
-			
-	};
-	xmlhttp.open("GET", "change_employee_rank.php?username="+username_val+"&rank="+rank_val, true);
-	xmlhttp.send();
-	window.location.reload();
-}
-</script>
   </head>
   <body>
 	  <?php include '../navbar.php'; ?>  
@@ -127,7 +104,6 @@ function change_rank(elmnt) {
 <ul id="myTab" class="nav nav-tabs">
             <li class="active"><a href="#about" data-toggle="tab"><i class="fa fa-info"></i> Über uns</a></li>
             <li class=""><a href="#employees" data-toggle="tab"><i class="fa fa-users"></i> Mitarbeiter</a></li>
-	    <li class=""><a href="#jobs" data-toggle="tab"><i class="fa fa-id-card"></i> Jobs</a></li>
             <li class=""><a href="#contact" data-toggle="tab"><i class="fa fa-id-card"></i> Kontakt</a></li>
                     </ul>
 <div id="myTabContent" class="tab-content">
@@ -147,9 +123,9 @@ echo file_get_contents("https://vtc.northwestvideo.de/media/articles/company_abo
 ?><br>
 					<i class="fas fa-users"></i> Mitarbeiter: <?php echo $employees;?> <br>
 					<i class="fas fa-truck-loading"></i> abgeschlossene Touren: <?php echo $tours_done;?> <br>
-					<!--<i class="fas fa-road"></i> zurückgelegte Strecke: <?php echo $driven_km;?> km<br>-->
-					<!--<i class="fas fa-trophy"></i> Rang(Strecke): <?php echo $rank_route;?> <br>-->
-					<!--<i class="fas fa-trophy"></i> Rang(Kapital): <?php echo $rank_money;?> <br>-->
+					<i class="fas fa-road"></i> zurückgelegte Strecke: <?php echo $driven_km;?> km<br>
+					<i class="fas fa-trophy"></i> Rang(Strecke): <?php echo $rank_route;?> <br>
+					<i class="fas fa-trophy"></i> Rang(Kapital): <?php echo $rank_money;?> <br>
                 </p>
             </div>
 
@@ -158,23 +134,18 @@ echo file_get_contents("https://vtc.northwestvideo.de/media/articles/company_abo
                     <thead>
                     <tr>
                         <td>Mitarbeiter</td>
-                        <td>aktuelle Rolle</td>
-						<?php if($EditEmployees == "1" && $requested_comp_id == $company){ ?>
-						<td>Neue Rolle zuweisen</td>
-						<?php }?>
-						<td></td>
+                        <td></td>
                     </tr>
                     </thead>
 
                     <tbody>
 						<?php
-						
-						$sql2 = "SELECT * FROM user_data WHERE userCompanyID=$requested_comp_id ORDER BY rank DESC";
-$result2 = $conn->query($sql2);
+						$sql = "SELECT * FROM user_data WHERE userCompanyID=$requested_comp_id ORDER BY rank DESC";
+$result = $conn->query($sql);
 
-if ($result2->num_rows > 0) {
+if ($result->num_rows > 0) {
     // output data of each row
-    while($row = $result2->fetch_assoc()) {
+    while($row = $result->fetch_assoc()) {
         $username = utf8_encode($row["username"]);
 		$userid = $row["userID"];
 		$user_rank = $row["rank"];
@@ -185,38 +156,12 @@ if ($result2->num_rows > 0) {
 			$user_rank_translation = "Fahrer";}else{
 			$user_rank_translation = $user_rank;
 		}
-		if($EditEmployees == "1" && $requested_comp_id == $company && $username != $found_token_owner){
-			
-		    $delete_bt = '<td><i class="fa fa-trash" onclick="delete_entry(this);" aria-hidden="true" data-id="'.$username.'" style="cursor: pointer;"></i></td>';
-		    echo '<tr data-id="'.$username.'"><td><a href="https://vtc.northwestvideo.de/account/?userid='.$userid.'"><img class="profilePicture" src="'.$profile_pic_url.'">'.$username.'</a></td><td>'.$user_rank_translation.'</td>';
-			?>
-						<td>
-
-<select onchange="change_rank(this)" data-id="<?php echo $username;?>">
-	<?php 
-			$sql = "SELECT * FROM rank WHERE forCompanyID=$requested_comp_id AND name NOT IN ('$user_rank')";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        $name_rank_comp = $row["name"];
-		echo '<option value="'.$name_rank_comp.'">'.$name_rank_comp.'</option>';
-    }
-} else {
-}
-	?>
-</select></td><td><?php echo $delete_bt; ?></td></tr>
-				
-				<?php
-		    }else{
-			echo '<tr><td><a href="https://vtc.northwestvideo.de/account/?userid='.$userid.'"><img class="profilePicture" src="'.$profile_pic_url.'"> '.$username.'</a></td><td>'.$user_rank_translation.'</td><td></td><td></td><td></td></tr>';
-			}
-		
+		echo '<tr><td><a href="https://vtc.northwestvideo.de/account/?userid='.$userid.'"><img class="profilePicture" src="'.$profile_pic_url.'"> '.$username.'</a></td><td>'.$user_rank_translation.'</td></tr>';
     }
 } else {
     echo "Keine Mitarbeiter";
 }
- ?>
+mysqli_close($conn); ?>
                     </tbody>
                 </table>
             </div>
@@ -232,39 +177,8 @@ if ($result->num_rows > 0) {
 				
 
                                                                 </div>
-								<div class="tab-pane" id="jobs">
-			<?php 
-			$sql2 = "SELECT * FROM job_market WHERE status='open' AND byCompanyID=$requested_comp_id";
-		$result2 = $conn->query($sql2);
-		if ($result2->num_rows > 0) {
-			// output data of each row
-			while($row = $result2->fetch_assoc()) {
-				$byCompanyID = $row["byCompanyID"];
-				$AdID = $row["AdID"];
-				$rank = $row["rank"];
-				$sql2 = "SELECT * FROM company_information_table WHERE id=$requested_comp_id";
-		$result2 = $conn->query($sql2);
-		if ($result2->num_rows > 0) {
-			// output data of each row
-			while($row = $result2->fetch_assoc()) {
-				$byCompanyname = $row["name"];
-			}
-		}
-				$job_desc = file_get_contents("https://vtc.northwestvideo.de/media/articles/ad_description/".$AdID.'.txt');
-				
-				echo <<<EOT
-				<h2>$byCompanyname - $rank gesucht!</h2>
-				<span class="text" style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 5;"><a href="https://vtc.northwestvideo.de/job_ad?id=$AdID">$job_desc</a></span><hr>
-				EOT;
-		}}else{
-		echo "Es wurden keine aktiven Stellenanzeigen gefunden";
-		}
-		mysqli_close($conn);?>
-			
-			<br>
-				
-
-                                                                </div>
+                    </div>
+	  </div>
 	      <footer class="footer">
         <div class="container">
             <div class="col-md-9 social-media">
@@ -280,4 +194,3 @@ if ($result->num_rows > 0) {
     </footer>
   </body>
 </html>
-
