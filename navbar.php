@@ -18,13 +18,13 @@ if(isset($_COOKIE['authWebToken'])) {
 		} else {
 			setcookie("username", "", time() - 13600,'/');
 			setcookie("authWebToken", "", time() - 13600,'/');
-			header("Refresh:0; url=https://vtc.northwestvideo.de/");
+			header("Refresh:0; url=/");
 			die("wrong owner detected");
 		}
 		if ($found_token_owner != $username_cookie) {
 			setcookie("username", "", time() - 13600,'/');
 			setcookie("authWebToken", "", time() - 13600,'/');
-			header("Refresh:0; url=https://vtc.northwestvideo.de/");
+			header("Refresh:0; url=/");
 			die("wrong owner detected");
 		}
 		$sql = "SELECT * FROM user_data WHERE username='$username_cookie'";
@@ -40,7 +40,7 @@ if(isset($_COOKIE['authWebToken'])) {
 		} else {
 			setcookie("username", "", time() - 13600,'/');
 			setcookie("authWebToken", "", time() - 13600,'/');
-			header("Refresh:0; url=https://vtc.northwestvideo.de/");
+			header("Refresh:0; url=/");
 			die("profile not found");
 		}
 $sql = "SELECT * FROM rank WHERE name='$rank_user' AND forCompanyID=$company";

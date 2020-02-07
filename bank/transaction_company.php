@@ -92,6 +92,7 @@ $sql = "SELECT * FROM user_data WHERE username='$receiver'";
 			die("Fehler: Etwas ist schiefgelaufen.  Kontaktiere den Support!");  
 		}
 		}
+$amount_conv = floatval($amount);
 $tra_receiver_bb_conv = floatval($tra_receiver_bb);
 $tra_receiver_bb_new = $tra_receiver_bb_conv + $amount_conv;
 $tra_comp_bank_balance_conv = floatval($tra_comp_bank_balance);
@@ -106,7 +107,7 @@ if ($conn->query($sql) === TRUE) {
 	die("Fehler: Etwas ist schiefgelaufen.  Kontaktiere den Support!");
 }
 } else {
-	$sql = "UPDATE user_data SET bank_balance=$tra_receiver_bb_conv WHERE username='$receiver'";
+	$sql = "UPDATE user_data SET bank_balance=$tra_receiver_bb_new WHERE username='$receiver'";
 
 if ($conn->query($sql) === TRUE) {
     echo "Record updated successfully";

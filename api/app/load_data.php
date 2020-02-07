@@ -1,4 +1,4 @@
-<?php  
+<?php
 foreach ($_POST as $key => $value) {
     switch ($key) {
         case 'authcode':
@@ -8,12 +8,13 @@ foreach ($_POST as $key => $value) {
             break;
     }
 }
-$host = 'localhost:3306';     
-$conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager");  
-if(! $conn )  
-{  
-  die("2");  
-}  
+$host = 'localhost:3306';
+$conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager");
+$authCode = $conn->real_escape_string($authCode);
+if(! $conn )
+{
+  die("2");
+}
 
 $sql = "SELECT User FROM authCode_table WHERE Token='$authCode'";
 $result = $conn->query($sql);
@@ -24,8 +25,25 @@ if ($result->num_rows > 0) {
         $user = $row["User"];
     }
 } else {
-    echo "Error: Token_Invalid";
-	die();
+  $host = 'localhost:3306';
+  $conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager");
+  if(! $conn )
+  {
+    die("2");
+  }
+
+  $sql = "SELECT User FROM authCode_table WHERE Token='$authCode'";
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+      // output data of each row
+      while($row = $result->fetch_assoc()) {
+          $user = $row["User"];
+      }
+    } else {
+        echo "0 results";
+        die();
+    }
 }
 	$sql = "SELECT * FROM user_data WHERE username='$user'";
 	$result = $conn->query($sql);
@@ -53,5 +71,5 @@ if ($result->num_rows > 0) {
 
 
 
-mysqli_close($conn); 
-?> 
+mysqli_close($conn);
+?>

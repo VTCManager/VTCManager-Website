@@ -35,6 +35,15 @@ foreach ($_POST as $key => $value) {
 $passwdhsh = hash('sha256',$passwd);
 $host = 'localhost:3306';     
 $conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager");
+$authcode = $conn->real_escape_string($authcode);
+$cargo = $conn->real_escape_string($cargo);
+$source = $conn->real_escape_string($source);
+$destination = $conn->real_escape_string($destination);
+$truck_manu = $conn->real_escape_string($truck_manu);
+$truck_model = $conn->real_escape_string($truck_model);
+$weight = $conn->real_escape_string($weight);
+$depature_company = $conn->real_escape_string($depature_company);
+$destination_company = $conn->real_escape_string($destination_company);
 
 $sql = "SELECT User FROM authCode_table WHERE Token='$authcode'";
 $result = $conn->query($sql);
@@ -45,7 +54,20 @@ if ($result->num_rows > 0) {
         $found_user = $row["User"];
     }
 } else {
-	die(); 
+	mysqli_close($conn); 
+    $host = 'localhost:3306';     
+    $conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager_en");
+    $sql = "SELECT User FROM authCode_table WHERE Token='$authcode'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            $found_user = $row["User"];
+        }
+    } else {
+        echo "0 results";
+        die();
+    }
 }
 $sql = "SELECT * FROM user_data WHERE username='$found_user'";
 $result = $conn->query($sql);
