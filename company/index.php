@@ -137,32 +137,62 @@ echo file_get_contents("https://vtc.northwestvideo.de/media/articles/company_abo
                     <thead>
                     <tr>
                         <td>Mitarbeiter</td>
-                        <td></td>
+                        <td>aktuelle Rolle</td>
+						<?php if($EditEmployees == "1" && $requested_comp_id == $company){ ?>
+						<td>Neue Rolle zuweisen</td>
+						<?php }?>
+						<td></td>
                     </tr>
                     </thead>
 
                     <tbody>
 						<?php
-						$sql = "SELECT * FROM user_data WHERE userCompanyID=$requested_comp_id ORDER BY rank DESC";
-$result = $conn->query($sql);
+						
+						$sql2 = "SELECT * FROM user_data WHERE userCompanyID=$requested_comp_id ORDER BY rank DESC";
+$result2 = $conn->query($sql2);
 
-if ($result->num_rows > 0) {
+if ($result2->num_rows > 0) {
     // output data of each row
-    while($row = $result->fetch_assoc()) {
+    while($row = $result2->fetch_assoc()) {
         $username = utf8_encode($row["username"]);
 		$userid = $row["userID"];
 		$user_rank = $row["rank"];
 		$profile_pic_url = $row["profile_pic_url"];
 		if ($user_rank == "owner") {
 			$user_rank_translation = "Geschäftsführung";}
-		else if ($user_rank == "driver") {
-			$user_rank_translation = "Fahrer";}else{
+		else{
 			$user_rank_translation = $user_rank;
 		}
-		echo '<tr><td><a href="https://vtc.northwestvideo.de/account/?userid='.$userid.'"><img class="profilePicture" src="'.$profile_pic_url.'"> '.$username.'</a></td><td>'.$user_rank_translation.'</td></tr>';
+		if($EditEmployees == "1" && $requested_comp_id == $company && $username != $found_token_owner){
+			
+		    $delete_bt = '<td><i class="fa fa-trash" onclick="delete_entry(this);" aria-hidden="true" data-id="'.$username.'" style="cursor: pointer;"></i></td>';
+		    echo '<tr data-id="'.$username.'"><td><a href="/account/?userid='.$userid.'"><img class="profilePicture" src="'.$profile_pic_url.'">'.$username.'</a></td><td>'.$user_rank_translation.'</td>';
+			?>
+						<td>
+
+<select onchange="change_rank(this)" data-id="<?php echo $username;?>">
+	<?php 
+			$sql = "SELECT * FROM rank WHERE forCompanyID=$requested_comp_id AND name NOT IN ('$user_rank')";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        $name_rank_comp = $row["name"];
+		echo '<option value="'.$name_rank_comp.'">'.$name_rank_comp.'</option>';
     }
 } else {
-    echo "Keine Mitarbeiter";
+}
+	?>
+</select></td><td><?php echo $delete_bt; ?></td></tr>
+				
+				<?php
+		    }else{
+			echo '<tr><td><a href="/account/?userid='.$userid.'"><img class="profilePicture" src="'.$profile_pic_url.'"> '.$username.'</a></td><td>'.$user_rank_translation.'</td><td></td><td></td><td></td></tr>';
+			}
+		
+    }
+} else {
+    echo "No Employees";
 }
 mysqli_close($conn); ?>
                     </tbody>
@@ -182,18 +212,6 @@ mysqli_close($conn); ?>
                                                                 </div>
                     </div>
 	  </div>
-	      <footer class="footer">
-        <div class="container">
-            <div class="col-md-9 social-media">
-                <p class="pull-left">
-                    <a href="https://vtc.northwestvideo.de/impressum">Impressum</a>|
-                    <a href="https://vtc.northwestvideo.de/datenschutz">Datenschutz &amp; Nutzungsbedingungen</a>
-                </p>
-            </div>
-            <div class="col-md-3">
-                <p class="pull-right">© © NorthWestMedia 2019-2020</p>
-            </div>
-                    </div>
-    </footer>
+	      <?php include '../footer.php'; ?>  
   </body>
 </html>
