@@ -17,6 +17,9 @@ if ($passwd=="" or $email=="") {
 $passwdhsh = hash('sha256',$passwd);
 $host = 'localhost:3306';     
 $conn = mysqli_connect($host, "root", "paswdmysqlllol29193093KK","nwv_api");  
+$email = $conn->real_escape_string($email);
+$passwd = $conn->real_escape_string($passwd);
+
 
 if(! $conn )  
 {  

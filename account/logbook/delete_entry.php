@@ -7,6 +7,9 @@ if(! $conn )
 {  
   die("2");  
 } 
+$requested_tour_id = $conn->real_escape_string($requested_tour_id);
+$requested_username = $conn->real_escape_string($requested_username);
+
 // sql to delete a record
 $sql = "DELETE FROM tour_table WHERE username='$requested_username' AND tour_id=$requested_tour_id";
 

@@ -24,6 +24,11 @@ if(! $conn )
 {  
   die("2");  
 }  
+$discordurl = $conn->real_escape_string($discordurl);
+$websiteurl = $conn->real_escape_string($websiteurl);
+$teamspeakurl = $conn->real_escape_string($teamspeakurl);
+
+
 $sql = "SELECT * FROM authCode_table WHERE Token='$authCode_cookie'";
 $result = $conn->query($sql);
 

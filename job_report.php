@@ -8,6 +8,10 @@ if(! $conn )
 {  
   die("2");  
 }  
+$requested_user_name = $conn->real_escape_string($requested_user_name);
+$requested_job_id = $conn->real_escape_string($requested_job_id);
+$requested_accept = $conn->real_escape_string($requested_accept);
+
 $username_cookie = $_COOKIE["username"]; 
 $authCode_cookie = $_COOKIE["authWebToken"]; 
 		$sql = "SELECT * FROM authCode_table WHERE Token='$authCode_cookie'";

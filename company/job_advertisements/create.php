@@ -26,6 +26,8 @@ if(! $conn )
 {  
   die("2");  
 }  
+$rank = $conn->real_escape_string($rank);
+
 $sql = "SELECT * FROM authCode_table WHERE Token='$authCode_cookie'";
 $result = $conn->query($sql);
 

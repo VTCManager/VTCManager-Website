@@ -11,6 +11,8 @@ if(! $conn )
 {  
   die("2");  
 }  
+$requested_ad_id = $conn->real_escape_string($requested_ad_id);
+
 
 $sql = "SELECT * FROM authCode_table WHERE Token='$authCode_cookie'";
 		$result = $conn->query($sql);

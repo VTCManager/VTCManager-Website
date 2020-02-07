@@ -10,7 +10,10 @@ $conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuo
 if(! $conn )  
 {  
   die("2");  
-}  
+} 
+$username = $conn->real_escape_string($username);
+$rank_new = $conn->real_escape_string($rank_new);
+ 
 $sql = "SELECT * FROM authCode_table WHERE Token='$authCode_cookie'";
 $result = $conn->query($sql);
 

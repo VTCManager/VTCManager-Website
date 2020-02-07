@@ -14,6 +14,8 @@ if ($email=="") {
 $reset_hash = md5( rand(0,1000) ); 
 $host = 'localhost:3306';     
 $conn = mysqli_connect($host, "root", "paswdmysqlllol29193093KK","nwv_api");  
+$email = $conn->real_escape_string($email);
+
 $sql = "SELECT * FROM user_data WHERE email_address='$email'";
 $result = $conn->query($sql);
 

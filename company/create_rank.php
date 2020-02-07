@@ -20,6 +20,9 @@ if(! $conn )
 {  
   die("2");  
 }  
+$salary = $conn->real_escape_string($salary);
+$requested_rank = $conn->real_escape_string($requested_rank);
+
 //authCode prüfen
 $sql = "SELECT * FROM authCode_table WHERE Token='$authCode_cookie'";
 $result = $conn->query($sql);

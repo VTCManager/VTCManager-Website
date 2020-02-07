@@ -11,6 +11,7 @@ foreach ($_POST as $key => $value) {
 $username_cookie = $_COOKIE["username"]; 
 $authCode_cookie = $_COOKIE["authWebToken"]; 
 $conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager");  
+
 if(! $conn )  
 {  
   die("2");  

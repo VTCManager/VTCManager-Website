@@ -12,7 +12,10 @@ foreach ($_POST as $key => $value) {
     }
 }
 $host = 'localhost:3306';    
-$conn = mysqli_connect($host, "root", "paswdmysqlllol29193093KK","nwv_api");  
+$conn = mysqli_connect($host, "root", "paswdmysqlllol29193093KK","nwv_api"); 
+$user = $conn->real_escape_string($user);
+$passwd = $conn->real_escape_string($passwd);
+ 
 if(! $conn )  
 {  
   die("2");  

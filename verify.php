@@ -11,6 +11,9 @@ if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !
     // Verify data
     $email = $_GET['email']; // Set email variable
     $hash = $_GET['hash']; // Set hash variable
+    $email = $conn->real_escape_string($email);
+    $hash = $conn->real_escape_string($hash);
+
                  
 	$sql = "SELECT * FROM user_data WHERE email_address='$email' AND activate_hash='$hash'";
 	$result = $conn->query($sql);

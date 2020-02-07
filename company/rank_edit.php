@@ -6,6 +6,8 @@ if(! $conn )
 {  
   die("2");  
 }  
+$requested_rank = $conn->real_escape_string($requested_rank);
+
 $username_cookie = $_COOKIE["username"]; 
 $authCode_cookie = $_COOKIE["authWebToken"]; 
 		$sql = "SELECT * FROM authCode_table WHERE Token='$authCode_cookie'";

@@ -14,6 +14,7 @@ foreach ($_POST as $key => $value) {
             break;
     }
 }
+
 $amount_conv = floatval($amount);
 if(!isset($_COOKIE['authWebToken'])) {
 	die("404");
@@ -26,6 +27,10 @@ if(! $conn )
 {  
   die("2");  
 }  
+$receiver = $conn->real_escape_string($receiver);
+$amount = $conn->real_escape_string($amount);
+$message = $conn->real_escape_string($message);
+
 
 $sql = "SELECT * FROM authCode_table WHERE Token='$authCode_cookie'";
 		$result = $conn->query($sql);

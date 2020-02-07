@@ -25,6 +25,8 @@ if(isset($_COOKIE['authWebToken'])) {
 		{  
 			die("2");  
 		}  
+		$rg_company_name = $conn->real_escape_string($rg_company_name);
+		$rg_comp_a_exist = $conn->real_escape_string($rg_comp_a_exist);
 		$sql = "SELECT * FROM authCode_table WHERE Token='$authCode_cookie'";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0) {

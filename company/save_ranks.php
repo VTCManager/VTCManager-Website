@@ -73,6 +73,16 @@ if(! $conn )
 {  
   die("2");  
 }  
+$SeeLogbook = $conn->real_escape_string($SeeLogbook);
+$EditLogbook = $conn->real_escape_string($EditLogbook);
+$SeeBank = $conn->real_escape_string($SeeBank);
+$UseBank = $conn->real_escape_string($UseBank);
+$EditSalary = $conn->real_escape_string($EditSalary);
+$EditEmployees = $conn->real_escape_string($EditEmployees);
+$salary = $conn->real_escape_string($salary);
+$struct_id = $conn->real_escape_string($struct_id);
+$EditProfile = $conn->real_escape_string($EditProfile);
+$requested_rank = $conn->real_escape_string($requested_rank);
 $sql = "SELECT * FROM authCode_table WHERE Token='$authCode_cookie'";
 $result = $conn->query($sql);
 

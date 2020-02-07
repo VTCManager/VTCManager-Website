@@ -3,6 +3,8 @@
 // Create database connection 
 $host = 'localhost:3306';     
 $db = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager");  
+$requested_ad_id = $db->real_escape_string($requested_ad_id);
+
  
 // Check connection 
 if ($db->connect_error) { 

@@ -9,6 +9,8 @@ if(! $conn )
 {
 	die("Can't connect to database");  
 }  
+$requested_ad_id = $conn->real_escape_string($requested_ad_id);
+
 
 //hole Informationen der Stellenanzeige
 $sql = "SELECT * FROM job_market WHERE AdID=$requested_ad_id";

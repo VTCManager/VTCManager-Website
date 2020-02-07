@@ -12,6 +12,7 @@ if($requested_comp_name == "M&D%20Transporte"){
 	$requested_comp_name == "M&D Transporte";
 }
 if(isset($_GET['companyname'])) {
+    $requested_comp_name = $conn->real_escape_string($requested_comp_name);
     $sql = "SELECT * FROM company_information_table WHERE name='$requested_comp_name'";
 $result = $conn->query($sql);
 
@@ -34,6 +35,8 @@ if ($result->num_rows > 0) {
 	die();
 }
 } else {
+        $requested_comp_id = $conn->real_escape_string($requested_comp_id);
+
 $sql = "SELECT * FROM company_information_table WHERE id=$requested_comp_id";
 $result = $conn->query($sql);
 
