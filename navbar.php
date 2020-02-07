@@ -115,7 +115,7 @@ if ($conn->query($sql) === TRUE) {
               </a>
               <ul class="dropdown-menu">
                 <li><a href="https://vtc.northwestvideo.de/account/?userid=<?php echo $navbar_userid; ?>">Mein Profil</a></li>
-                <li><a href="https://vtc.northwestvideo.de/api/app/VTCMInstaller-latest.exe">Download</a></li>
+                <li><a href="/download">Download</a></li>
                 <li><a href="https://discord.gg/AnhpaX6">Hilfe &amp; Support</a></li>
                 <li><a href="https://vtc.northwestvideo.de/api/web/account/logout.php">Ausloggen</a></li>
               </ul>
@@ -183,7 +183,7 @@ function notify_read(elmnt) {
               </a>
               <ul class="dropdown-menu">
                 <li><a href="https://vtc.northwestvideo.de/account/?userid=<?php echo $navbar_userid; ?>">Mein Profil</a></li>
-                <li><a href="https://vtc.northwestvideo.de/api/app/VTCMInstaller-latest.exe">Download</a></li>
+                <li><a href="/download">Download</a></li>
                 <li><a href="https://discord.gg/AnhpaX6">Hilfe &amp; Support</a></li>
                 <li><a href="https://vtc.northwestvideo.de/api/web/account/logout.php">Ausloggen</a></li>
               </ul>
@@ -249,7 +249,7 @@ function notify_read(elmnt) {
               </a>
               <ul class="dropdown-menu">
                 <li><a href="https://vtc.northwestvideo.de/account/?userid=<?php echo $navbar_userid; ?>">Mein Profil</a></li>
-                <li><a href="https://vtc.northwestvideo.de/api/app/VTCMInstaller-latest.exe">Download</a></li>
+                <li><a href="/download">Download</a></li>
                 <li><a href="https://discord.gg/AnhpaX6">Hilfe &amp; Support</a></li>
                 <li><a href="https://vtc.northwestvideo.de/api/web/account/logout.php">Ausloggen</a></li>
               </ul>
