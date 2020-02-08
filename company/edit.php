@@ -162,6 +162,7 @@ mysqli_close($conn);
 						<td>Rolle</td>
 						<td>Gehalt</td>
                         <td>Bearbeitung</td>
+			<td></td>
                     </tr>
                 </thead>
 				<tbody>
