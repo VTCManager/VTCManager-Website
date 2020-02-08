@@ -1,17 +1,16 @@
 <?php  
 $requested_comp_id= $_GET['companyid'];
-$requested_comp_name= $_GET['companyname'];
+$requested_comp_name= $_POST['companyname'];
 $host = 'localhost:3306';     
 $conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager");  
 if(! $conn )  
 {  
   die("2");  
 }  
-echo $requested_comp_name;
 if($requested_comp_name == "M&D%20Transporte"){
 	$requested_comp_name == "M&D Transporte";
 }
-if(isset($_GET['companyname'])) {
+if(isset($_POST['companyname'])) {
     $requested_comp_name = $conn->real_escape_string($requested_comp_name);
     $sql = "SELECT * FROM company_information_table WHERE name='$requested_comp_name'";
 $result = $conn->query($sql);

@@ -28,6 +28,9 @@ foreach ($_POST as $key => $value) {
 		case 'destination_company':
             $destination_company = $value;
             break;
+        case 'distance':
+            $distance_tour = $value;
+            break;
         default:
             break;
     }
@@ -44,6 +47,7 @@ $truck_model = $conn->real_escape_string($truck_model);
 $weight = $conn->real_escape_string($weight);
 $depature_company = $conn->real_escape_string($depature_company);
 $destination_company = $conn->real_escape_string($destination_company);
+$distance_tour = $conn->real_escape_string($distance_tour);
 
 $sql = "SELECT User FROM authCode_table WHERE Token='$authcode'";
 $result = $conn->query($sql);
@@ -89,8 +93,8 @@ if ($conn->query($sql) === TRUE) {
     echo "Error updating record: " . $conn->error;
 }
 
-$sql = "INSERT INTO tour_table (username, departure, destination, truck_manufacturer, truck_model, cargo_weight, cargo, money_earned, tour_id, status, companyID, depature_company, destination_company)
-VALUES ('$found_user', '$source', '$destination', '$truck_manu', '$truck_model', '$weight', '$cargo', '','$latest_tour', 'accepted by driver', $company, '$depature_company', '$destination_company')";
+$sql = "INSERT INTO tour_table (username, departure, destination, truck_manufacturer, truck_model, cargo_weight, cargo, money_earned, tour_id, status, companyID, depature_company, destination_company, distance)
+VALUES ('$found_user', '$source', '$destination', '$truck_manu', '$truck_model', '$weight', '$cargo', '','$latest_tour', 'accepted by driver', $company, '$depature_company', '$destination_company', $distance_tour)";
 if ($conn->query($sql) === TRUE) {
     echo $latest_tour;
 	exit;
