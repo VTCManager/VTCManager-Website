@@ -152,7 +152,7 @@ mysqli_close($conn);
 
                     <tbody>
 						<?php
-						$sql = "SELECT * FROM money_transfer WHERE sender='$username_cookie' OR receiver='$username_cookie' ORDER by date_sent DESC";
+						$sql = "SELECT * FROM money_transfer WHERE sender='$username_cookie' OR receiver='$username_cookie' ORDER by date_sent DESC LIMIT 50";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -197,7 +197,7 @@ if ($result->num_rows > 0) {
 
                     <tbody>
 						<?php
-						$sql = "SELECT * FROM money_transfer WHERE sender='$found_company_name' OR receiver='$found_company_name' ORDER by date_sent DESC";
+						$sql = "SELECT * FROM money_transfer WHERE sender='$found_company_name' OR receiver='$found_company_name' ORDER by date_sent DESC LIMIT 50";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
