@@ -37,7 +37,7 @@ if ($result->num_rows > 0) {
 if ($found_token_owner != $username_cookie) {
 	die("wrong owner detected");
 }
-$sql = "SELECT * FROM tour_table WHERE username='$found_token_owner' ORDER BY `tour_id` DESC";
+$sql = "SELECT * FROM tour_table WHERE username='$found_token_owner' ORDER BY `tour_id` DESC LIMIT $start_from, ".$results_per_page;
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
