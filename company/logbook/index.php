@@ -126,7 +126,7 @@ function delete_entry(elmnt) {
                 </tbody>
             </table>
 	    <?php 
-$sql = "SELECT COUNT(tour_date) AS total FROM tour_table";
+$sql = "SELECT COUNT(tour_date) AS total FROM tour_table WHERE companyID=$found_company";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $total_pages = ceil($row["total"] / $results_per_page); // calculate total pages with results

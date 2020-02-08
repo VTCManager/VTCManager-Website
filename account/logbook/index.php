@@ -65,7 +65,7 @@ function delete_entry(elmnt) {
                 </tbody>
             </table>
 	    <?php 
-$sql = "SELECT COUNT(tour_date) AS total FROM tour_table";
+$sql = "SELECT COUNT(tour_date) AS total FROM tour_table WHERE username='$found_token_owner'";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $total_pages = ceil($row["total"] / $results_per_page); // calculate total pages with results
