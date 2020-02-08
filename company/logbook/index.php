@@ -57,6 +57,16 @@ $sql = "SELECT * FROM rank WHERE name='$rank_user' AND forCompanyID=$company";
 		} else {
 		die("no res 1");
 		}
+		$sql = "SELECT * FROM company_information_table WHERE id=$company";
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				$company_name = $row["name"];
+			}
+		} else {
+		die("no res 1");
+		}
 if($SeeLogbook2 == "0"){
 	header("Status: 404 Not Found");
 	die();
@@ -87,7 +97,7 @@ function delete_entry(elmnt) {
 	  <?php include '../../navbar.php'; ?>  
 	  		<div class="container">
         <div class="page-header">
-            <h1>Deine Fahrtenbucheinträge</h1>
+            <h1>Fahrtenbucheinträge von <?php echo $company_name;?></h1>
 			
         </div>
 				

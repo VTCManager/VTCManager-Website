@@ -32,7 +32,7 @@
 	      <footer class="footer">
         <div class="container">
 	  <form action="/company/" method="post" name="createnewrankForm" id="createnewrankForm">
-			<input class="form-control" type="text" name="compname" id="skill_input" placeholder="Suche..." aria-label="Search">
+			<input class="form-control" type="text" name="companyname" id="skill_input" placeholder="Suche..." aria-label="Search">
 			<button type="submit" class="btn btn-primary" name="submit" id="submit">Öffnen</button>
 			</form>
 			<?php $sql = "SELECT * FROM job_market WHERE status='open' ORDER BY RAND() LIMIT 20";

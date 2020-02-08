@@ -19,11 +19,6 @@ foreach ($_POST as $key => $value) {
 }
 $host = 'localhost:3306';    
 $con = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager");
-$requested_foruser = $conn->real_escape_string($requested_foruser);
-$requested_event = $conn->real_escape_string($requested_event);
-$requested_eventid = $conn->real_escape_string($requested_eventid);
-$requested_eventybauser = $conn->real_escape_string($requested_eventybauser);
-
 $sql = "SELECT id FROM notification WHERE username='$requested_foruser' ORDER BY id DESC LIMIT 1";
 $result = $con->query($sql);
 

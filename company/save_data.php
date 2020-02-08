@@ -73,7 +73,7 @@ if(!file_exists($_FILES['fileToUpload']['tmp_name']) || !is_uploaded_file($_FILE
 $target_dir = "../media/company_profile_pictures/";
 $nameofile = $_FILES["fileToUpload"]["name"];
 $ext = end((explode(".", $nameofile)));
-$target_file = $target_dir . basename($username_cookie.'.'.$ext);
+$target_file = $target_dir . basename($userCompanyID.'.'.$ext);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 // Check if image file is a actual image or fake image

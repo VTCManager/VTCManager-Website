@@ -80,6 +80,28 @@ mysqli_close($conn);
   <body>
 	  <?php include '../navbar.php'; ?>  
 	  &nbsp;&nbsp;
+	  <div class="modal fade" id="createnewrank" tabindex="-1" role="dialog">
+       <div class="modal-dialog" role="document">
+           <div class="modal-content">
+               <form action="/company/create_rank" method="post" name="createnewrankForm" id="createnewrankForm">
+                   <div class="modal-header">
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                  <h4 class="modal-title" id="myModalLabel">Neue Rolle erstellen</h4>
+                                          </div>
+                   <div class="modal-body">
+                       <input type="text" class="form-control" name="name" id="name" placeholder="Name" autocomplete="off">
+                       <div class="input-group">
+                           <input type="number" class="form-control" name="salary" id="salary" min="1" max="3000" placeholder="Gehalt" required="">
+                           <span class="input-group-addon">€</span>
+                       </div>
+                   </div>
+                   <div class="modal-footer">
+                       <button type="submit" class="btn btn-primary" name="submit" id="submit">Erstellen</button>
+                   </div>
+               </form>
+           </div>
+       </div>
+   </div>
 	  <div class="container">
 		  <h2><img src="<?php echo $Company_avatar; ?>" class="profileViewAvatar"> <?php echo $Company_name;?> </h2>
 		  <?php if($_GET['idc'] == "sc"){
@@ -131,6 +153,9 @@ mysqli_close($conn);
             </div>
 	<div class="tab-pane" id="rank">
 		<div class="vertical-scroll">
+		    <div class="pull-rigt">
+				<a href="#" class="btn btn-default pull-right" data-toggle="modal" data-target="#createnewrank">Neue Rolle erstellen</a>
+			</div>
             <table class="table">
                 <thead>
                     <tr>
@@ -148,18 +173,6 @@ mysqli_close($conn);
                     </div>
 		  
 	  </div>
-	      <footer class="footer">
-        <div class="container">
-            <div class="col-md-9 social-media">
-                <p class="pull-left">
-                    <a href="https://vtc.northwestvideo.de/impressum">Impressum</a>|
-                    <a href="https://vtc.northwestvideo.de/datenschutz">Datenschutz &amp; Nutzungsbedingungen</a>
-                </p>
-            </div>
-            <div class="col-md-3">
-                <p class="pull-right">© © NorthWestMedia 2019-2020</p>
-            </div>
-                    </div>
-    </footer>
+	      <?php include '../footer.php'; ?>
   </body>
 </html>

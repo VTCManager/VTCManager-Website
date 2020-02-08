@@ -84,6 +84,8 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
 		$username = $row["username"];
+		echo $username;
+		echo "hi";
 		// Your POST data
 $data = http_build_query(array(
     'fu' => $username,

@@ -19,7 +19,7 @@ $query = $db->query("SELECT * FROM company_information_table WHERE name LIKE '%"
 $skillData = array(); 
 if($query->num_rows > 0){ 
     while($row = $query->fetch_assoc()){ 
-        $data['id'] = $row['id']; 
+        $data['id'] = $row['name']; 
         $data['value'] = $row['name']; 
         array_push($skillData, $data); 
     } 
