@@ -1,4 +1,7 @@
 <?php
+if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
+$results_per_page = 20;
+$start_from = ($page-1) * $results_per_page;
 $username_cookie = $_COOKIE["username"]; 
 $authCode_cookie = $_COOKIE["authWebToken"]; 
 if (!isset($_COOKIE["authWebToken"])&&!isset($_COOKIE["username"])) {
@@ -122,6 +125,18 @@ function delete_entry(elmnt) {
 					<?php include 'load_data.php'; ?>                  
                 </tbody>
             </table>
+	    <?php 
+$sql = "SELECT COUNT(tour_date) AS total FROM tour_table";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$total_pages = ceil($row["total"] / $results_per_page); // calculate total pages with results
+  
+for ($i=1; $i<=$total_pages; $i++) {  // print links for all pages
+            echo "<a href='index.php?page=".$i."'";
+            if ($i==$page)  echo " class='curPage'";
+            echo ">".$i."</a> "; 
+}; 
+?>
         </div>
     </div>
 	      <?php include '../../footer.php'; ?>  
