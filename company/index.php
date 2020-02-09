@@ -112,11 +112,11 @@ function change_rank(elmnt) {
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
 		console.log(xmlhttp.response);
+		window.location.reload();
 			
 	};
 	xmlhttp.open("GET", "change_employee_rank.php?username="+username_val+"&rank="+rank_val, true);
 	xmlhttp.send();
-	window.location.reload();
 }
 </script>
   </head>
