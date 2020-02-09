@@ -61,6 +61,10 @@ if ($result->num_rows > 0) {
 	mysqli_close($conn); 
     $host = 'localhost:3306';     
     $conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager_en");
+    if(! $conn )  
+{  
+  die("2");  
+}
     $sql = "SELECT User FROM authCode_table WHERE Token='$authcode'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
@@ -83,6 +87,8 @@ if ($result->num_rows > 0) {
 		$company = $row["userCompanyID"];
     }
 } else {
+    echo $found_user;
+    die("no user");
 }
 (int)$latest_tour++;
 $sql = "UPDATE user_data SET last_tour_id='$latest_tour' WHERE username='$found_user'";

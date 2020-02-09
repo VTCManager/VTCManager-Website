@@ -89,7 +89,7 @@ if(isset($_POST["submit"])) {
     }
 }
 // Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
+if ($_FILES["fileToUpload"]["size"] > 5000000) {
 	$conn->close();
     header("Location: https://vtc.northwestvideo.de/company/edit?idc=pic_too_lg");
 	exit();
@@ -106,6 +106,10 @@ if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
+    $files = glob("../media/company_profile_pictures/".$userCompanyID.".*");
+    foreach ($files as $file) {
+	unlink($file);
+    }
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
     } else {
