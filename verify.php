@@ -9,8 +9,8 @@ if(! $conn )
              
 if(isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && !empty($_GET['hash'])){
     // Verify data
-    $email = $_GET['email']; // Set email variable
-    $hash = $_GET['hash']; // Set hash variable
+    $email = filter_input(INPUT_GET, "email", FILTER_SANITIZE_EMAIL); // Set email variable
+    $hash = filter_input(INPUT_GET, "hash", FILTER_SANITIZE_STRING); // Set hash variable
     $email = $conn->real_escape_string($email);
     $hash = $conn->real_escape_string($hash);
 
