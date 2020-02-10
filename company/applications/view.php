@@ -182,6 +182,15 @@ $info = '<div class="alert alert-danger" role="alert">
 				} else {
 					$appli_username = "Unbekannt";
 				}
+				if($appli_status == "sent"){
+					$appli_status_tra = "Überprüfung ausstehend";
+				}else if($appli_status == "declined"){
+					$appli_status_tra = "Bewerbung abgelehnt";
+				}else if($appli_status == "accepted"){
+					$appli_status_tra = "Warte auf Bestätigung durch den Bewerber";
+				}else if($appli_status == "acceptedbyuser"){
+					$appli_status_tra = "Bewerber eingestellt";
+				}
 		?>
 <!DOCTYPE html>
 <html lang="de">
@@ -196,9 +205,11 @@ $info = '<div class="alert alert-danger" role="alert">
 			<h1>Bewerbungen von <?php echo $appli_username;?></h1>
 			<p>Rolle: <?php echo $forRank;?><br>
 			   Abgesendet um <?php echo $appli_time;?><br>
-			   Status: <?php echo $appli_status;?></p>
+			   Status: <?php echo $appli_status_tra;?></p>
+			   <?php if($appli_status == "sent") {?>
 			   <form action="" method="post" name="createnewrankForm" id="createnewrankForm"><input type="hidden" value="accept" name="cmd" /><button class="btn btn-success" name="id" value="<?php echo $application_id;?>">Akzeptieren</button></form>
 			   <form action="" method="post" name="createnewrankForm" id="createnewrankForm"><input type="hidden" value="decline" name="cmd" /><button class="btn btn-danger" name="id" value="<?php echo $application_id;?>">Ablehnen</button></form>
+			   <?php } ?>
             <footer class="footer">
             <div class="col-md-9 social-media">
                 <p class="pull-left">
