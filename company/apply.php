@@ -78,13 +78,19 @@ if ($conn->query($sql) === TRUE) {
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
-$sql = "SELECT * FROM user_data WHERE rank='owner' AND userCompanyID=$byCompanyID";
-$result = $conn->query($sql);
+$sql2 = "SELECT * FROM rank WHERE EditEmployees=1 AND forCompanyID=$byCompanyID";
+$result2 = $conn->query($sql2);
 
-if ($result->num_rows > 0) {
+if ($result2->num_rows > 0) {
+  while($row2 = $result2->fetch_assoc()) {
+		$rank_to_notify = $row2["name"];
+$sql3 = "SELECT * FROM user_data WHERE rank='$rank_to_notify' AND userCompanyID=$byCompanyID";
+$result3 = $conn->query($sql3);
+
+if ($result3->num_rows > 0) {
     // output data of each row
-    while($row = $result->fetch_assoc()) {
-		$username = $row["username"];
+    while($row3 = $result3->fetch_assoc()) {
+		$username = $row3["username"];
 		// Your POST data
 $data = http_build_query(array(
     'fu' => $username,
@@ -108,10 +114,11 @@ if ($result === FALSE) { /* Handle error */ }
 
 		
 	}
-} else {
-    echo "Error: no company owners";
-	die();
 }
+  }
+}else{
+  die("Fehlercode:1");
+  }
 $conn->close();
 $myfile = fopen("../media/articles/application_text/$last_applicationID.txt", "w") or die("Unable to open file!");
 fwrite($myfile, nl2br($requested_ad_text));

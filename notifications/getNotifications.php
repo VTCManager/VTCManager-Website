@@ -33,16 +33,16 @@ if( $result->num_rows > 0 ){
 			echo '<li class="'.$class_type.'" onclick="notify_read(this);" value="'.$id.'"><a href="#">Willkommen bei VTCManager</a></li>';
 			break;
 		case "newapplication":
-			echo '<li class="'.$class_type.'" onclick="notify_read(this);" value="'.$id.'"><a href="https://vtc.northwestvideo.de/company/review_application?id='.$row["eventID"].'">Neue Bewerbung von '.$row["eventbyUser"].'</a></li>';
+			echo '<li class="'.$class_type.'" onclick="notify_read(this);" value="'.$id.'"><a href="/company/applications/">Neue Bewerbung von '.$row["eventbyUser"].'</a></li>';
 			break;
 		case "application.accepted":
-			echo '<li class="'.$class_type.'" onclick="notify_read(this);" value="'.$id.'"><a href="https://vtc.northwestvideo.de/company/accept_application?id='.$row["eventID"].'">Klick um Firma beizutreten: '.$row["eventbyUser"].'</a></li>';
+			echo '<li class="'.$class_type.'" onclick="notify_read(this);" value="'.$id.'"><a href="/company/accept_application?id='.$row["eventID"].'">Klick um Firma beizutreten: '.$row["eventbyUser"].'</a></li>';
 			break;
 		case "application.declined":
 			echo '<li class="'.$class_type.'" onclick="notify_read(this);" value="'.$id.'"><a href="#">Bewerbung abgelehnt bei '.$row["eventbyUser"].'</a></li>';
 			break;
 		case "new.salary":
-			echo '<li class="'.$class_type.'" onclick="notify_read(this);" value="'.$id.'"><a href="#">Dein Gehalt ist da!</a></li>';
+			echo '<li class="'.$class_type.'" onclick="notify_read(this);" value="'.$id.'"><a href="https://vtc.northwestvideo.de/bank/">Dein Gehalt ist da!</a></li>';
 			break;
 	}
 	}
