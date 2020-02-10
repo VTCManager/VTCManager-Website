@@ -44,9 +44,9 @@ if ($result->num_rows > 0) {
     echo "Error: User not found";
 	die();
 }
-//if($userCompanyID_search != "0"){
-//	die("You are already in a company");
-//}
+if($userCompanyID_search != "0"){
+	die("You are already in a company");
+}
 
 $sql = "SELECT * FROM job_market WHERE AdID=$requested_ad_id";
 		$result = $conn->query($sql);
