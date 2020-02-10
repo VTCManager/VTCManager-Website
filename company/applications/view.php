@@ -61,10 +61,89 @@ $sql = "SELECT * FROM rank WHERE name='$rank_user' AND forCompanyID=$company";
 	die("Berechtigung fehlt.");
 }
 if(isset($_POST['cmd'])) {
+			$sql = "SELECT * FROM application WHERE applicationID=$application_id";
+		$result1 = $conn->query($sql);
+		if ($result1->num_rows > 0) {
+			// output data of each row
+			while($row = $result1->fetch_assoc()) {
+				$byUserID = $row["byUserID"];
+				$forRank = $row["forRank"];
+				$appli_status = $row["status"];
+				$appli_time = $row["time"];
+			}
+		}
+		$sql = "SELECT * FROM user_data WHERE userID=$byUserID";
+				$result = $conn->query($sql);
+				if ($result->num_rows > 0) {
+					while($row = $result->fetch_assoc()) {
+						$appli_username = $row["username"];
+						}
+				} else {
+					$appli_username = "Unbekannt";
+				}
+				$sql = "SELECT * FROM company_information_table WHERE id=$company";
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				$company_name = $row["name"];
+			}
+		} else {
+		die("no res 1");
+		}
 	if($_POST['cmd'] == "accept"){
+		$sql = "UPDATE application SET status='accepted' WHERE applicationID=$application_id";
+		if ($conn->query($sql) === TRUE) {
+		} else {
+			die("Error updating record: " . $conn->error);
+		}
+		// Your POST data
+$data = http_build_query(array(
+    'fu' => $appli_username,
+    'evnt' => 'application.accepted',
+	'evntid' => $application_id,
+	'evbyu' => $company_name
+));
+
+// Create HTTP stream context
+$context = stream_context_create(array(
+    'http' => array(
+        'method' => 'POST',
+        'header' => 'Content-Type: application/x-www-form-urlencoded',
+        'content' => $data
+    )
+));
+
+// Make POST request
+$response = file_get_contents('http://vtc.northwestvideo.de/notifications/notify.php', false, $context);
+if ($result === FALSE) { /* Handle error */ }
 		
 	}else if($_POST['cmd'] == "decline") {
-			
+			$sql = "UPDATE application SET status='declined' WHERE applicationID=$application_id";
+		if ($conn->query($sql) === TRUE) {
+		} else {
+			die("Error updating record: " . $conn->error);
+		}
+		// Your POST data
+$data = http_build_query(array(
+    'fu' => $appli_username,
+    'evnt' => 'application.declined',
+	'evntid' => '0',
+	'evbyu' => $company_name
+));
+
+// Create HTTP stream context
+$context = stream_context_create(array(
+    'http' => array(
+        'method' => 'POST',
+        'header' => 'Content-Type: application/x-www-form-urlencoded',
+        'content' => $data
+    )
+));
+
+// Make POST request
+$response = file_get_contents('http://vtc.northwestvideo.de/notifications/notify.php', false, $context);
+if ($result === FALSE) { /* Handle error */ }
 	}
 }
 		$sql = "SELECT * FROM company_information_table WHERE id=$company";
@@ -77,16 +156,7 @@ if(isset($_POST['cmd'])) {
 		} else {
 		die("no res 1");
 		}
-		$sql = "SELECT * FROM user_data WHERE userID=$byUserID";
-				$result = $conn->query($sql);
-				if ($result->num_rows > 0) {
-					while($row = $result->fetch_assoc()) {
-						$appli_username = $row["username"];
-						}
-				} else {
-					$appli_username = "Unbekannt";
-				}
-$sql = "SELECT * FROM application WHERE applicationID=$application_id";
+		$sql = "SELECT * FROM application WHERE applicationID=$application_id";
 		$result1 = $conn->query($sql);
 		if ($result1->num_rows > 0) {
 			// output data of each row
