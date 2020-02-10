@@ -36,6 +36,25 @@ if ($result->num_rows > 0) {
 		<?php include 'basis_header.php'; ?>  
 	</head>
 	<body>
+		<div class="modal fade" id="apply" tabindex="-1" role="dialog">
+       <div class="modal-dialog" role="document">
+           <div class="modal-content">
+               <form action="/company/apply" method="post" name="transactForm" id="transact_form">
+                   <div class="modal-header">
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                  <h4 class="modal-title" id="myModalLabel">Bewerbung als <?php echo $rank;?></h4>
+                                          </div>
+                   <div class="modal-body">
+			   <input type="hidden" value="<?php echo $AdID; ?>" name="ad_id" />
+                       <textarea name="text" class="form-control" aria-label="Bewerbungstext" placeholder="Bewerbungstext"></textarea>
+                   </div>
+                   <div class="modal-footer">
+                       <button type="submit" class="btn btn-success" name="submit" id="submit">Bewerben</button>
+                   </div>
+               </form>
+           </div>
+       </div>
+   </div>
 		<?php include 'navbar.php'; ?>  
 		<footer class="footer">
 			<div class="container">
@@ -49,7 +68,7 @@ if ($result->num_rows > 0) {
 		EOT;
 	}
 }?>
-				<button type="button" class="btn btn-success" onclick="location.href = 'https://vtc.northwestvideo.de/company/apply?ad_id=<?php echo $AdID;?>';">Bewerben</button>
+				<a class="btn btn-default pull-right" data-toggle="modal" data-target="#apply">Bewerben</a>
 				<hr>
 				<br>
 				<p>Seite neu laden um weitere Ergebnisse zu sehen.</p>

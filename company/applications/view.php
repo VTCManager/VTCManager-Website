@@ -206,6 +206,14 @@ $info = '<div class="alert alert-danger" role="alert">
 			<p>Rolle: <?php echo $forRank;?><br>
 			   Abgesendet um <?php echo $appli_time;?><br>
 			   Status: <?php echo $appli_status_tra;?></p>
+			   <p><?php
+$content = @file_get_contents("../../media/articles/application_text/".$application_id.'.txt');
+if($content === FALSE) {
+	echo "Der Bewerbungstext ist nicht abrufbar";
+	}else{
+		echo $content;
+		}
+?></p>
 			   <?php if($appli_status == "sent") {?>
 			   <form action="" method="post" name="createnewrankForm" id="createnewrankForm"><input type="hidden" value="accept" name="cmd" /><button class="btn btn-success" name="id" value="<?php echo $application_id;?>">Akzeptieren</button></form>
 			   <form action="" method="post" name="createnewrankForm" id="createnewrankForm"><input type="hidden" value="decline" name="cmd" /><button class="btn btn-danger" name="id" value="<?php echo $application_id;?>">Ablehnen</button></form>

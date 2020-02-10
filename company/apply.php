@@ -1,5 +1,6 @@
 <?php  
-$requested_ad_id = $_GET['ad_id'];
+$requested_ad_id = $_POST['ad_id'];
+$requested_ad_text = $_POST['text'];
 $username_cookie = $_COOKIE["username"]; 
 $authCode_cookie = $_COOKIE["authWebToken"]; 
 date_default_timezone_set('Europe/Berlin');
@@ -43,9 +44,9 @@ if ($result->num_rows > 0) {
     echo "Error: User not found";
 	die();
 }
-if($userCompanyID_search != "0"){
-	die("You are already in a company");
-}
+//if($userCompanyID_search != "0"){
+//	die("You are already in a company");
+//}
 
 $sql = "SELECT * FROM job_market WHERE AdID=$requested_ad_id";
 		$result = $conn->query($sql);
@@ -84,8 +85,6 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
 		$username = $row["username"];
-		echo $username;
-		echo "hi";
 		// Your POST data
 $data = http_build_query(array(
     'fu' => $username,
@@ -114,6 +113,9 @@ if ($result === FALSE) { /* Handle error */ }
 	die();
 }
 $conn->close();
-header("Location: https://vtc.northwestvideo.de/company/?companyid=$byCompanyID"); 
+$myfile = fopen("../media/articles/application_text/$last_applicationID.txt", "w") or die("Unable to open file!");
+fwrite($myfile, nl2br($requested_ad_text));
+fclose($myfile);
+header("Location: /company/?companyid=$byCompanyID&msg=1"); 
     exit; 
 ?>

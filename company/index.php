@@ -7,6 +7,13 @@ if(! $conn )
 {  
   die("2");  
 }  
+if(isset($_GET['msg'])){
+  if($_GET['msg'] == "1"){
+    $info = '<div class="alert alert-success" role="alert">
+    Deine Bewerbung wurde erfolgreich übermittelt!
+    </div>';
+    }
+}
 if($requested_comp_name == "M&D%20Transporte"){
 	$requested_comp_name == "M&D Transporte";
 }
@@ -122,6 +129,7 @@ function change_rank(elmnt) {
   </head>
   <body>
 	  <?php include '../navbar.php'; ?>  
+	  <?php echo $info; ?>
 	  &nbsp;&nbsp;
 	  <div class="container">
 		  <h1><img src="<?php echo $Company_avatar; ?>" class="profileViewAvatar"> <?php echo $name;?> </h1>
