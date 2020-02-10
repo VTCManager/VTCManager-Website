@@ -19,7 +19,7 @@ $sql = "SELECT * FROM application WHERE byUserID=$navbar_userid ORDER BY time DE
 					$appli_username = "Unbekannt";
 				}
 				if($appli_status == "sent"){
-					$appli_status_tra = "Überprüfung ausstehend";
+					$appli_status_tra = "Überprüfung durch Firma ausstehend";
 				}else if($appli_status == "declined"){
 					$appli_status_tra = "Bewerbung abgelehnt";
 				}else if($appli_status == "accepted"){
