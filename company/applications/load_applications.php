@@ -1,5 +1,5 @@
 <?php
-$sql = "SELECT * FROM application WHERE forCompanyID=$company ORDER BY time DESC";
+$sql = "SELECT * FROM application WHERE forCompanyID=$company ORDER BY time DESC LIMIT $start_from, ".$results_per_page;
 		$result1 = $conn->query($sql);
 		if ($result1->num_rows > 0) {
 			// output data of each row

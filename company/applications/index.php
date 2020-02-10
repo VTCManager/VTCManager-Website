@@ -1,4 +1,8 @@
-<?php $host = 'localhost:3306';    
+<?php 
+if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
+$results_per_page = 20;
+$start_from = ($page-1) * $results_per_page;
+$host = 'localhost:3306';    
 		$conn = mysqli_connect($host, "system_user_vtc", "8rh98w23nrfubsediofnm<pbi9ufuoipbgiwtFFF","vtcmanager"); 
 		if(! $conn )  
 		{  
@@ -92,6 +96,18 @@ if($EditEmployees != "1"){
 					<?php include 'load_applications.php'; ?>                  
                 </tbody>
             </table>
+	    <?php 
+$sql = "SELECT COUNT(applicationID) AS total FROM application WHERE forCompanyID=$company";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$total_pages = ceil($row["total"] / $results_per_page); // calculate total pages with results
+  
+for ($i=1; $i<=$total_pages; $i++) {  // print links for all pages
+            echo "<a href='index.php?page=".$i."'";
+            if ($i==$page)  echo " class='curPage'";
+            echo ">".$i."</a> "; 
+}; 
+?>
             </div>
             <footer class="footer">
             <div class="col-md-9 social-media">

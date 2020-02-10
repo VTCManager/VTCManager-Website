@@ -87,14 +87,15 @@ if ($conn->query($sql) === TRUE) {
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-			  <li><a href="https://vtc.northwestvideo.de/account/logbook/"><i class="fa fa-book"></i> Fahrtenbuch</a></li>
+			  <li><a href="/account/logbook/"><i class="fa fa-book"></i> Fahrtenbuch</a></li>
                                     <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-building"></i> Spedition<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="https://vtc.northwestvideo.de/company/?companyid=<?php echo $company; ?>">Profil</a></li>
+                <li><a href="/company/?companyid=<?php echo $company; ?>">Profil</a></li>
 				  <li><a href="https://vtc.northwestvideo.de/map/?companyid=<?php echo $company; ?>">Livemap</a></li>
                 <li><a href="https://vtc.northwestvideo.de/company/logbook/">Fahrtenbuch</a></li>
 				  <li><a href="https://vtc.northwestvideo.de/company/job_advertisements/">Stellenanzeigen</a></li>
+				  <li><a href="/company/applications/">Bewerbungen</a></li>
                                 <li><a href="https://vtc.northwestvideo.de/company/edit">Einstellungen</a></li>
                                                               </ul>
             </li>
@@ -117,7 +118,7 @@ if ($conn->query($sql) === TRUE) {
                 <li><a href="https://vtc.northwestvideo.de/account/?userid=<?php echo $navbar_userid; ?>">Mein Profil</a></li>
                 <li><a href="/download">Download</a></li>
                 <li><a href="https://discord.gg/AnhpaX6">Hilfe &amp; Support</a></li>
-                <li><a href="https://vtc.northwestvideo.de/api/web/account/logout.php">Ausloggen</a></li>
+                <li><a href="/api/web/account/logout.php">Ausloggen</a></li>
               </ul>
             </li>
                                               </ul>
@@ -163,6 +164,7 @@ function notify_read(elmnt) {
                 <li><a href="https://vtc.northwestvideo.de/company/?companyid=<?php echo $company; ?>">Profil</a></li>
                 <li><a href="https://vtc.northwestvideo.de/map/?companyid=<?php echo $company; ?>">Livemap</a></li>
 				  <?php if($SeeLogbook == "1"){echo '<li><a href="https://vtc.northwestvideo.de/company/logbook/">Fahrtenbuch</a></li>';} ?>
+				  <?php if($EditEmployees == "1"){echo '<li><a href="/company/applications/">Bewerbungen</a></li>';} ?>
 				  <?php if($EditProfile == "1"){echo '<li><a href="https://vtc.northwestvideo.de/company/edit">Einstellungen</a></li>';} ?>
                                                               </ul>
             </li>
