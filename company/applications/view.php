@@ -116,6 +116,9 @@ $context = stream_context_create(array(
 
 // Make POST request
 $response = file_get_contents('http://vtc.northwestvideo.de/notifications/notify.php', false, $context);
+$info = '<div class="alert alert-success" role="alert">
+  Bewerbung wurde angenommen! Warte auf Bestätigung durch Bewerber...
+</div>';
 if ($result === FALSE) { /* Handle error */ }
 		
 	}else if($_POST['cmd'] == "decline") {
@@ -144,6 +147,9 @@ $context = stream_context_create(array(
 // Make POST request
 $response = file_get_contents('http://vtc.northwestvideo.de/notifications/notify.php', false, $context);
 if ($result === FALSE) { /* Handle error */ }
+$info = '<div class="alert alert-danger" role="alert">
+  Die Bewerbung wurde abgelehnt!
+</div>';
 	}
 }
 		$sql = "SELECT * FROM company_information_table WHERE id=$company";
@@ -186,6 +192,7 @@ if ($result === FALSE) { /* Handle error */ }
   <body>
 	  <?php include '../../navbar.php'; ?>  
 	  <div class="container">
+		  <?php echo $info;?>
 			<h1>Bewerbungen von <?php echo $appli_username;?></h1>
 			<p>Rolle: <?php echo $forRank;?><br>
 			   Abgesendet um <?php echo $appli_time;?><br>
