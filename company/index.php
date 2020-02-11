@@ -92,7 +92,6 @@ if ($result->num_rows > 0) {
 } else {
 }
 $founded_date = date('d.m.Y', strtotime($founded_date));
-mysqli_close($conn); 
 ?> 
 <!DOCTYPE html>
 <html lang="de">
@@ -271,7 +270,7 @@ if ($result->num_rows > 0) {
 		}}else{
 		echo "No active job offers were found";
 		}
-		mysqli_close($conn);?>
+		?>
 			
 			<br>
 				
@@ -282,3 +281,4 @@ if ($result->num_rows > 0) {
 	      <?php include '../footer.php'; ?>  
   </body>
 </html>
+<?php mysqli_close($conn);?> 

@@ -9,33 +9,11 @@
     <script src="ets2-mobile-route-advisor/maps/ets2/js/map.js"></script>
     <script type="text/javascript">
 	var url = "live_cord.php?companyid=0";
-        var g_runningGame = "ETS2";
         var g_pathPrefix = "ets2-mobile-route-advisor";
         var g_map = null;
         var g_src = null;
         var g_features = [];
-	function getSearchParameters() {
-      		var prmstr = window.location.search.substr(1);
-      		return prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
-	}
 
-	function transformToAssocArray( prmstr ) {
-    		var params = {};
-    		var prmarr = prmstr.split("&");
-    		for ( var i = 0; i < prmarr.length; i++) {
-        		var tmparr = prmarr[i].split("=");
-        		params[tmparr[0]] = tmparr[1];
-    		}
-    		return params;
-	}
-
-	var params = getSearchParameters();
-	if(params.id){
-	url += "&id="+params.id;
-	}
-	if(params.sp != null){
-	url += "&sp="+params.sp;
-	}
         function styleFunction(resolution) {
             return [new ol.style.Style({
                 image: new ol.style.Icon({
@@ -95,7 +73,6 @@
 
 </div>
 <script type="text/javascript">
-    console.log("Init");
     g_map = buildMap("map");
     update();
     setInterval(update, 2500);
