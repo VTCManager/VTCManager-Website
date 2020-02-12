@@ -38,8 +38,9 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
-if ($found_rank != "owner"){
-	die("404: not found");
+if ($EditProfile != "1"){
+	header("Status: 404 Not Found");
+	die();
 }
 $sql = "SELECT * FROM rank WHERE forCompanyID=$found_company ORDER BY struct_id ASC";
 $result = $conn->query($sql);

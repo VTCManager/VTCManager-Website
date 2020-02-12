@@ -45,8 +45,9 @@ $authCode_cookie = $_COOKIE["authWebToken"];
 			header("Refresh:0; url=https://vtc.northwestvideo.de/");
 			die("profile not found");
 		}
-if ($rank_user != "owner") {
-	die("no permission");
+if ($EditEmployees != "1"){
+	header("Status: 404 Not Found");
+	die();
 }
 $sql = "SELECT * FROM rank WHERE name='$requested_rank' AND forCompanyID=$company";
 		$result = $conn->query($sql);
