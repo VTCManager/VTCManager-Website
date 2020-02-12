@@ -59,7 +59,15 @@ if($EditEmployees != "1"){
 if($EditProfile != "1"){
 	$EditProfile = "0";
 }
-}
+}else{
+    $EditProfile = "1";
+    $EditEmployees = "1";
+    $EditSalary = "1";
+    $UseBank = "1";
+    $SeeBank = "1";
+    $EditLogbook = "1";
+    $SeeLogbook = "1";
+    }
 if($salary == null){
 	$salary = "0";
 }

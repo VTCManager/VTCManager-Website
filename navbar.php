@@ -166,7 +166,7 @@ function notify_read(elmnt) {
                 <li><a href="https://vtc.northwestvideo.de/map/?companyid=<?php echo $company; ?>">Livemap</a></li>
 				  <?php if($SeeLogbook == "1"){echo '<li><a href="https://vtc.northwestvideo.de/company/logbook/">Fahrtenbuch</a></li>';} ?>
 				  <?php if($EditEmployees == "1"){echo '<li><a href="/company/applications/">Bewerbungen</a></li>';} ?>
-				  <?php if($EditProfile == "1"){echo '<li><a href="https://vtc.northwestvideo.de/company/edit">Einstellungen</a></li>';} ?>
+				  <?php if($EditProfile == "1" || $EditEmployees == "1"){echo '<li><a href="https://vtc.northwestvideo.de/company/edit">Einstellungen</a></li>';} ?>
                                                               </ul>
             </li>
 			  <li><a href="https://vtc.northwestvideo.de/bank/"><i class="fa fa-bank"></i> Bank</a></li>

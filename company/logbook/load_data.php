@@ -38,8 +38,8 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
-if ($found_rank != "owner"){
-	die("404: not found");
+if ($SeeLogbook != "1"){
+	die("no permission");
 }
 $sql = "SELECT * FROM tour_table WHERE companyID=$found_company ORDER BY `tour_date` DESC LIMIT $start_from, ".$results_per_page;
 $result = $conn->query($sql);
