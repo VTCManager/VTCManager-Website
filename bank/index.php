@@ -164,6 +164,7 @@ if ($result->num_rows > 0) {
 		$date_sent = $row["date_sent"];
 		$amount = $row["amount"];
 		$status = $row["status"];
+		$date_sent = date('d.m.Y', strtotime($date_sent));
 		echo '<tr><td>'.$sender.'</td><td>'.$receiver.'</td><td>'.$message.'</td><td>'.$date_sent.'</td><td>'.$amount.'€</td><td>'.$status.'</td></tr>';
     }
 } else {
@@ -209,6 +210,7 @@ if ($result->num_rows > 0) {
 		$date_sent = $row["date_sent"];
 		$amount = $row["amount"];
 		$status = $row["status"];
+		$date_sent = date('d.m.Y', strtotime($date_sent));
 		echo '<tr><td>'.$sender.'</td><td>'.$receiver.'</td><td>'.$message.'</td><td>'.$date_sent.'</td><td>'.$amount.'€</td><td>'.$status.'</td></tr>';
     }
 } else {
