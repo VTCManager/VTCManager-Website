@@ -48,6 +48,7 @@ if($userCompanyID_search != "0"){
 	die("You are already in a company");
 }
 
+
 $sql = "SELECT * FROM job_market WHERE AdID=$requested_ad_id";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0) {
@@ -70,6 +71,16 @@ $sql = "SELECT * FROM application ORDER BY applicationID DESC LIMIT 1";
 		}else{
 			die("job ad not found");
 		}
+		$sql = "SELECT * FROM application WHERE byUserID=$userid AND forCompanyID=$byCompanyID AND status='sent'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+		die("Die hast dich bereits für diese Stellenanzeige beworben");
+		
+	}
+}
 (int)$last_applicationID++;
 $sql = "INSERT INTO `application`(`byUserID`, `forCompanyID`,`applicationID`,`forRank`, `status`) VALUES ($userid,$byCompanyID,$last_applicationID,'$rank','sent')";
 
