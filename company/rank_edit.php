@@ -45,10 +45,6 @@ $authCode_cookie = $_COOKIE["authWebToken"];
 			header("Refresh:0; url=https://vtc.northwestvideo.de/");
 			die("profile not found");
 		}
-if ($EditEmployees != "1"){
-	header("Status: 404 Not Found");
-	die();
-}
 $sql = "SELECT * FROM rank WHERE name='$requested_rank' AND forCompanyID=$company";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0) {
@@ -83,7 +79,11 @@ mysqli_close($conn);
 	  <?php include '../basis_header.php'; ?> 
   </head>
   <body>
-	  <?php include '../navbar.php'; ?>  
+	  <?php include '../navbar.php';
+	  if ($EditEmployees != "1"){
+	header("Status: 404 Not Found");
+	die();
+} ?>  
 	  &nbsp;&nbsp;
 	  <div class="container">
 		  <h2>Rolle: <?php echo $requested_rank_tra;?></h2>
