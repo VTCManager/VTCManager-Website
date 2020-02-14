@@ -14,7 +14,7 @@
 			   Nachdem du eine Tour mit einem eigenen Auflieger gefahren bist, musst du diesen Abkuppeln, um den Auftrag zu beenden (Ton bei erfolgreichem Abschluss).<br>
 			   <strong>2. Installation der DLL</strong><br>
 			   Du lädst gleich eine sogenannte ZIP-Datei runter, die du entpacken musst. In dem entpackten Ordner findest du die Datei "ets2-telemetry.dll". Diese Datei muss in den Plugins Ordner vom Euro Truck Simulator 2 (C:/Program Files (x86)/Steam/steamapps/common/Euro Truck Simulator 2/bin/win_x64/plugins/).Sollte der Plugins Ordner nicht existieren, dann erstelle diesen einfach. Nun bist du bereit für die erste Fahrt. Happy Trucking!</p>
-			   <button type="button" class="btn btn-dark-green" onclick="location.href = '/vtcm_client.tar';" >Downloaden</button><br><br>
+			   <button type="button" class="btn btn-dark-green" onclick="location.href = '/vtcm_client.zip';" >Downloaden</button><br><br>
 		  <iframe src="https://giphy.com/embed/tq3BP6bsQ0Jwc" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/truck-tq3BP6bsQ0Jwc">via GIPHY</a></p>
 		  </div>
 	  </div>
