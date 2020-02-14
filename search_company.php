@@ -35,7 +35,10 @@
 			<input class="form-control" type="text" name="companyname" id="skill_input" placeholder="Suche..." aria-label="Search">
 			<button type="submit" class="btn btn-primary" name="submit" id="submit">Öffnen</button>
 			</form>
-			<?php $sql = "SELECT * FROM job_market WHERE status='open' ORDER BY RAND() LIMIT 20";
+			<?php 
+			if(isset($found_token_owner))
+			{
+			$sql = "SELECT * FROM job_market WHERE status='open' ORDER BY RAND() LIMIT 20";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0) {
 			// output data of each row
@@ -64,6 +67,7 @@
 			<br>
 			<p>Seite neu laden um weitere Ergebnisse zu sehen.</p>
 			<br>
+			<?php } ?>
             <div class="col-md-9 social-media">
                 <p class="pull-left">
                     <a href="https://vtc.northwestvideo.de/impressum">Impressum</a>|
