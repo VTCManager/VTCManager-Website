@@ -118,7 +118,7 @@ if ($conn->query($sql) === TRUE) {
                 <li><a href="https://vtc.northwestvideo.de/account/?userid=<?php echo $navbar_userid; ?>">Mein Profil</a></li>
 		<li><a href="/account/applications/">Meine Bewerbungen</a></li>
                 <li><a href="/download">Download</a></li>
-                <li><a href="https://discord.gg/AnhpaX6" target="_blank">Hilfe &amp; Support</a></li>
+                <li><a href="/help">Hilfe &amp; Support</a></li>
                 <li><a href="/api/web/account/logout.php">Ausloggen</a></li>
               </ul>
             </li>
@@ -188,7 +188,7 @@ function notify_read(elmnt) {
                 <li><a href="https://vtc.northwestvideo.de/account/?userid=<?php echo $navbar_userid; ?>">Mein Profil</a></li>
 		<li><a href="/account/applications/">Meine Bewerbungen</a></li>
                 <li><a href="/download">Download</a></li>
-                <li><a href="https://discord.gg/AnhpaX6" target="_blank">Hilfe &amp; Support</a></li>
+                <li><a href="/help">Hilfe &amp; Support</a></li>
                 <li><a href="https://vtc.northwestvideo.de/api/web/account/logout.php">Ausloggen</a></li>
               </ul>
             </li>
@@ -255,7 +255,7 @@ function notify_read(elmnt) {
                 <li><a href="https://vtc.northwestvideo.de/account/?userid=<?php echo $navbar_userid; ?>">Mein Profil</a></li>
 		<li><a href="/account/applications/">Meine Bewerbungen</a></li>
                 <li><a href="/download">Download</a></li>
-                <li><a href="https://discord.gg/AnhpaX6" target="_blank">Hilfe &amp; Support</a></li>
+                <li><a href="/help">Hilfe &amp; Support</a></li>
                 <li><a href="https://vtc.northwestvideo.de/api/web/account/logout.php">Ausloggen</a></li>
               </ul>
             </li>

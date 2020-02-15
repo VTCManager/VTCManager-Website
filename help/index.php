@@ -58,6 +58,20 @@
 			<button type="submit" class="btn btn-primary" name="submit" id="submit">Öffnen</button>
 			</form>
 			<hr>
+			<?php 
+			$sql = "SELECT * FROM help_articles ORDER BY RAND() LIMIT 20";
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				$article_name_search = $row["article_name"];
+				$article_id_search = $row["ID"];
+				$article_name_desc = file_get_contents("https://vtc.northwestvideo.de/media/articles/help_articles/".$article_id_search.'.txt');
+				
+				echo '<h2>'.$article_name_search.'</h2><span class="text" style="display: block;height: 100px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">.'.$article_name_desc.'</span><form action="article" method="post" name="createnewrankForm" id="createnewrankForm"><input type="hidden" name="article" value="'.$article_name_search.'"><button type="submit" class="btn btn-primary" name="submit" id="submit">Öffnen</button></form><hr>';
+			}
+		} else {
+		}?>
 			<iframe src="https://discordapp.com/widget?id=657886971514978306&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
             <div class="col-md-9 social-media">
                 <p class="pull-left">
