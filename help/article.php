@@ -18,6 +18,15 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 	while($row = $result->fetch_assoc()) {
 		$ID_article = $row["ID"];
+		$clicks_article = $row["clicks"];
+		(int)$clicks_article++;
+		$sql = "UPDATE help_articles SET clicks=$clicks_article WHERE ID=$ID_article";
+		if ($conn->query($sql) === TRUE) {
+		} else {
+			echo "Error updating record: " . $conn->error;
+		}
+
+
 		?>
 <!DOCTYPE html>
 <html lang="de">
