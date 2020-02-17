@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
   <head>
+    <meta name="google-site-verification" content="r2Bq-2ocVh60-0e5uyRuB6YTSk5A8iOufZxyiKZxyQw" />
 	  <title>VTCManager - ETS2 Manager</title>
 	  <?php include 'basis_header.php'; ?>
   </head>
