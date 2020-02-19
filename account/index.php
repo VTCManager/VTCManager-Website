@@ -35,6 +35,7 @@ if ($result->num_rows > 0) {
         $username_search = $row["username"];
 		$userCompanyID_search = $row["userCompanyID"];
 		$profile_pic_url_search = $row["profile_pic_url"];
+		$profile_pic_url_search = str_replace(' ', '+', $profile_pic_url_search);
 		$rank_search = $row["rank"];
 		$last_seen_search = $row["last_seen"];
 		$last_seen_search = date('d.m.Y H:i', strtotime($last_seen_search));

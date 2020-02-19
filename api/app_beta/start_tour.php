@@ -53,6 +53,7 @@ $destination_company = $conn->real_escape_string($destination_company);
 $distance_tour = $conn->real_escape_string($distance_tour);
 $hash_tag = $conn->real_escape_string($hash_tag);
 
+
 $sql = "SELECT User FROM authCode_table WHERE Token='$authcode'";
 $result = $conn->query($sql);
 
@@ -105,8 +106,10 @@ if ($result->num_rows > 0) {
         echo $latest_tour;
         exit;
     }
+} else {
+	(int)$latest_tour++;
 }
-(int)$latest_tour++;
+
 $sql = "UPDATE user_data SET last_tour_id='$latest_tour' WHERE username='$found_user'";
 
 if ($conn->query($sql) === TRUE) {
@@ -117,11 +120,14 @@ if ($conn->query($sql) === TRUE) {
 
 
 if($count >= 1) {
+	// Mache ein Update wenn der Tour Hash vorhanden ist ...
 $sql = "UPDATE tour_table SET 
 `tour_id` = '$latest_tour',
 `status` = 'accepted by driver',
 `distance` = '$distance_tour' WHERE hash_tag = '$hash_tag'";
+
 } else {
+	// ... ansonsten schreibe eine neue Tour in Database
 $sql = "INSERT INTO tour_table (username, departure, destination, truck_manufacturer, truck_model, cargo_weight, cargo, money_earned, tour_id, status, companyID, depature_company, destination_company, distance, hash_tag)
 VALUES ('$found_user', '$source', '$destination', '$truck_manu', '$truck_model', '$weight', '$cargo', '','$latest_tour', 'accepted by driver', $company, '$depature_company', '$destination_company', $distance_tour, '$hash_tag')";
 }
