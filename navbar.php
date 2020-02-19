@@ -35,7 +35,7 @@ if(isset($_COOKIE['authWebToken'])) {
 				$navbar_userid = $row["userID"];
 				$rank_user = $row["rank"];
 				$profile_pic = $row["profile_pic_url"];
-				$profile_pic = str_replace(' ', '+', $profile_pic);
+				$profile_pic = str_replace(' ', '%20', $profile_pic);
 				$company = $row["userCompanyID"];
 			}
 		} else {

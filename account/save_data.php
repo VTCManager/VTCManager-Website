@@ -92,7 +92,7 @@ if ($uploadOk == 0) {
 	exit();
     }
 }
-$username_cookie = str_replace(' ', '+', $username_cookie);
+$username_cookie = str_replace(' ', '%20', $username_cookie);
 $sql = "UPDATE user_data SET profile_pic_url='https://vtc.northwestvideo.de/media/profile_pictures/$username_cookie.$ext' WHERE userID=$userid_edit_prof";
 
 if ($conn->query($sql) === TRUE) {
